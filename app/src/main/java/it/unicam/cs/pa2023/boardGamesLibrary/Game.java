@@ -1,8 +1,7 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
-public interface Game<T extends DefaultPlayer, K extends DefaultRule> {
+public interface Game<T extends Player, K extends Rule, B extends Board> {
 
-    //gestisce la dinamicita' del gioco
     void playGame(T player);
 
     void setupGame();
@@ -19,7 +18,7 @@ public interface Game<T extends DefaultPlayer, K extends DefaultRule> {
 
     boolean deleteRule(K rule);
 
-    boolean addGameState(GameState gameState);
+    boolean addGameState(GameState<B,T> gameState);
 
     boolean removeLastGameState();
 
@@ -28,4 +27,6 @@ public interface Game<T extends DefaultPlayer, K extends DefaultRule> {
     boolean removePlayerPiece(Piece piece, T player);
 
     boolean updatePlayerScore(T player);
+
+    String getGameName();
 }

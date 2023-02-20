@@ -3,14 +3,14 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K> {
+public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultRule, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K, B> {
 
     private ArrayList<K> gameRules;
     private ArrayList<T> players;
     private String gameName;
     private B gameBoard;
     private int turn;
-    private ArrayList<GameState> gameStateHistory;
+    private ArrayList<GameState<B,T>> gameStateHistory;
     private D defaultCoordinateMapper;
 
     public DefaultGame(ArrayList<K> gameRules, ArrayList<T> players, String gameName, B gameBoard) {
@@ -19,7 +19,7 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
         this.gameName = gameName;
         this.gameBoard = gameBoard;
         this.turn = 0;
-        this.gameStateHistory = new ArrayList<GameState>();
+        this.gameStateHistory = new ArrayList<>();
         this.defaultCoordinateMapper = null;
     }
 
@@ -29,7 +29,7 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
         this.gameName = gameName;
         this.gameBoard = gameBoard;
         this.turn = 0;
-        this.gameStateHistory = new ArrayList<GameState>();
+        this.gameStateHistory = new ArrayList<>();
         this.defaultCoordinateMapper = defaultCoordinateMapper;
     }
 
@@ -69,7 +69,7 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
     }
 
     @Override
-    public boolean addGameState(GameState gameState) {
+    public boolean addGameState(GameState<B,T> gameState) {
         return this.gameStateHistory.add(gameState);
     }
 
@@ -135,16 +135,16 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DefaultGame game = (DefaultGame) o;
-        return Objects.equals(getGameRules(), game.getGameRules()) && Objects.equals(getGameName(), game.getGameName());
+        DefaultGame<?, ?, ?, ?> that = (DefaultGame<?, ?, ?, ?>) o;
+        return getTurn() == that.getTurn() && Objects.equals(getGameRules(), that.getGameRules()) && Objects.equals(getPlayers(), that.getPlayers()) && Objects.equals(getGameName(), that.getGameName()) && Objects.equals(getGameBoard(), that.getGameBoard()) && Objects.equals(gameStateHistory, that.gameStateHistory) && Objects.equals(getDefaultCoordinateMapper(), that.getDefaultCoordinateMapper());
     }
 
-    public ArrayList<GameState> getGameStateHistory() {
-        return gameStateHistory;
-    }
-
-    public void setGameStateHistory(ArrayList<GameState> gameStateHistory) {
+    public void setGameStateHistory(ArrayList<GameState<B,T>> gameStateHistory) {
         this.gameStateHistory = gameStateHistory;
+    }
+
+    public ArrayList<GameState<B,T>> getGameStateHistory() {
+        return this.gameStateHistory;
     }
 
     public D getDefaultCoordinateMapper() {

@@ -1,7 +1,7 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
 //foto di ogni turno del gioco
-public class GameState<B extends DefaultBoard, P extends Player> {
+public class GameState<B extends Board, P extends Player> {
 
     private B board;
     private P player;
@@ -16,8 +16,8 @@ public class GameState<B extends DefaultBoard, P extends Player> {
     @Override
     public String toString() {
         return "GameState{" +
-                "board=" + board +
-                ", player=" + player +
+                "board=" + board //show board
+                + ", player=" + player.getName() +
                 ", turnNumber=" + turnNumber +
                 '}';
     }

@@ -7,18 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class OthelloGame extends DefaultGame {
+public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, OthelloBoard, OthelloCoordinateMapper> {
 
-    private OthelloCoordinateMapper othelloCoordinateMapper;
-
-    public OthelloGame(ArrayList<OthelloRule> gameRules, ArrayList<OthelloPlayer> players, String gameName, OthelloBoard gameBoard) {
-        super(gameRules, players, gameName, gameBoard);
-        this.othelloCoordinateMapper = createOthelloCoordinateMapper();
+    public OthelloGame(ArrayList<OthelloRule> gameRules, ArrayList<OthelloPlayer> players, String gameName, OthelloBoard gameBoard, OthelloCoordinateMapper othelloCoordinateMapper) {
+        super(gameRules, players, gameName, gameBoard, othelloCoordinateMapper);
     }
 
 
     //non e' considerato metodo implementato perche' passiamo OthelloPlayer al posto di P extends Player
-    //@Override
+    @Override
     public void playGame(OthelloPlayer player) {
         if(this.getTurn()==0){
             if(player.getColor() == Colors.DARK){
@@ -31,25 +28,49 @@ public class OthelloGame extends DefaultGame {
     //todo
     @Override
     public void setupGame(){
-        OthelloPlayer player1 = new OthelloPlayer("Player1", Colors.DARK, createPlayerPieces(Colors.DARK), 2, this.getOthelloCoordinateMapper());
-        OthelloPlayer player2 = new OthelloPlayer("Player2", Colors.LIGHT, createPlayerPieces(Colors.LIGHT), 2, this.getOthelloCoordinateMapper());
-        this.addPlayer(player1);
-        this.addPlayer(player2);
-        Coordinate coordinate = new Coordinate(Integer.valueOf(4), Integer.valueOf(4), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(player2.getPlayersPieces().get(0)));
-        coordinate = new Coordinate(Integer.valueOf(5), Integer.valueOf(5), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(player2.getPlayersPieces().get(1)));
-        player2.getPlayersPieces().remove(0);
-        player2.getPlayersPieces().remove(1);
-        coordinate = new Coordinate(Integer.valueOf(5), Integer.valueOf(4), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(player1.getPlayersPieces().get(0)));
-        coordinate = new Coordinate(Integer.valueOf(4), Integer.valueOf(5), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(player1.getPlayersPieces().get(1)));
-        player1.getPlayersPieces().remove(0);
-        player1.getPlayersPieces().remove(1);
+        setupPlayers();
+        setupBoard();
         //regole
     }
 
+    /**
+     * "Create two players, one with dark pieces and one with light pieces, and add them to the game."
+     *
+     * The first thing we do is create two players. The first parameter is the name of the player, the second is the color
+     * of the pieces, the third is the pieces themselves, the fourth is the number of pieces the player starts with, and
+     * the fifth is the coordinate mapper
+     */
+    private void setupPlayers(){
+        OthelloPlayer player1 = new OthelloPlayer("Player1", Colors.DARK, createPlayerPieces(Colors.DARK), 2, getDefaultCoordinateMapper());
+        OthelloPlayer player2 = new OthelloPlayer("Player2", Colors.LIGHT, createPlayerPieces(Colors.LIGHT), 2, getDefaultCoordinateMapper());
+        this.addPlayer(player1);
+        this.addPlayer(player2);
+    }
+
+    /**
+     * This function sets up the board for the game
+     */
+    private void setupBoard(){
+        Coordinate coordinate = new Coordinate(Integer.valueOf(4), Integer.valueOf(4), 1);
+        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(1).getPlayersPieces().get(0)));
+        coordinate = new Coordinate(Integer.valueOf(5), Integer.valueOf(5), 1);
+        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(1).getPlayersPieces().get(1)));
+        this.getPlayers().get(1).getPlayersPieces().remove(0);
+        this.getPlayers().get(1).getPlayersPieces().remove(1);
+        coordinate = new Coordinate(Integer.valueOf(5), Integer.valueOf(4), 1);
+        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(0).getPlayersPieces().get(0)));
+        coordinate = new Coordinate(Integer.valueOf(4), Integer.valueOf(5), 1);
+        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(0).getPlayersPieces().get(1)));
+        this.getPlayers().get(0).getPlayersPieces().remove(0);
+        this.getPlayers().get(0).getPlayersPieces().remove(1);
+    }
+
+    /**
+     * It creates 64 pieces of the same color and returns them in an ArrayList
+     *
+     * @param color the color of the player
+     * @return An ArrayList of Piece objects.
+     */
     private ArrayList<Piece> createPlayerPieces(Colors color){
         Piece blackPiece = new Piece(Colors.DARK, Integer.valueOf(1), "pedina");
         ArrayList<Piece> playerPieces = new ArrayList<>();
@@ -60,34 +81,17 @@ public class OthelloGame extends DefaultGame {
     }
 
     @Override
-    public boolean getStatistics(DefaultPlayer player) {
+    public boolean getStatistics(OthelloPlayer player) {
         return false;
     }
 
 
     @Override
-    public boolean updatePlayerScore(DefaultPlayer player) {
+    public boolean updatePlayerScore(OthelloPlayer player) {
         return false;
     }
 
-    private static OthelloCoordinateMapper createOthelloCoordinateMapper(){
-        Map<Character, Integer> map = new HashMap<>();
-        map.putIfAbsent(Character.valueOf('a'), Integer.valueOf(1));
-        map.putIfAbsent(Character.valueOf('b'), Integer.valueOf(2));
-        map.putIfAbsent(Character.valueOf('c'), Integer.valueOf(3));
-        map.putIfAbsent(Character.valueOf('d'), Integer.valueOf(4));
-        map.putIfAbsent(Character.valueOf('e'), Integer.valueOf(5));
-        map.putIfAbsent(Character.valueOf('f'), Integer.valueOf(6));
-        map.putIfAbsent(Character.valueOf('g'), Integer.valueOf(7));
-        map.putIfAbsent(Character.valueOf('h'), Integer.valueOf(8));
-        return new OthelloCoordinateMapper(map);
-    }
 
-    public OthelloCoordinateMapper getOthelloCoordinateMapper() {
-        return othelloCoordinateMapper;
-    }
 
-    public void setOthelloCoordinateMapper(OthelloCoordinateMapper othelloCoordinateMapper) {
-        this.othelloCoordinateMapper = othelloCoordinateMapper;
-    }
+
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class DefaultPlayer<E extends DefaultGame, D extends DefaultCoordinateMapper> implements Player<E>{
+public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
 
     private int score;
     private Scanner scanner;
@@ -65,13 +65,13 @@ public class DefaultPlayer<E extends DefaultGame, D extends DefaultCoordinateMap
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DefaultPlayer that = (DefaultPlayer) o;
-        return Objects.equals(getName(), that.getName()) && getColor() == that.getColor() && Objects.equals(getPlayersPieces(), that.getPlayersPieces());
+        DefaultPlayer<?> that = (DefaultPlayer<?>) o;
+        return getScore() == that.getScore() && Objects.equals(scanner, that.scanner) && Objects.equals(getName(), that.getName()) && getColor() == that.getColor() && Objects.equals(getPlayersPieces(), that.getPlayersPieces()) && Objects.equals(getDefaultCoordinateMapper(), that.getDefaultCoordinateMapper());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getColor(), getPlayersPieces());
+        return Objects.hash(getScore(), scanner, getName(), getColor(), getPlayersPieces(), getDefaultCoordinateMapper());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class DefaultPlayer<E extends DefaultGame, D extends DefaultCoordinateMap
     public Piece selectPiece() {
         String chosenPiece;
         this.scanner = new Scanner(System.in);
-        boolean pieceExist = true;
+        boolean pieceExist;
         do{
             System.out.println("Select a piece: ");
             showPiece();
@@ -151,8 +151,9 @@ public class DefaultPlayer<E extends DefaultGame, D extends DefaultCoordinateMap
         return true;
     }
 
+    /*
     @Override
-    public E chooseGame(ArrayList<E> listOfGames) {
+    public <E extends Game>  E chooseGame(ArrayList<E> listOfGames) {
         String chosenGame;
         this.scanner = new Scanner(System.in);
         boolean gameExist = true;
@@ -166,7 +167,7 @@ public class DefaultPlayer<E extends DefaultGame, D extends DefaultCoordinateMap
         return listOfGames.get(Integer.parseInt(chosenGame)-1);
     }
 
-    private boolean checkValidGameId(ArrayList<E> listOfGames, String chosenGame){
+    private <E extends Game> boolean checkValidGameId(ArrayList<E> listOfGames, String chosenGame){
         if(Integer.parseInt(chosenGame) >= listOfGames.size()){
             System.out.println("The game id is not valid. Please insert a valid number.");
             return false;
@@ -175,13 +176,15 @@ public class DefaultPlayer<E extends DefaultGame, D extends DefaultCoordinateMap
         }
     }
 
-    private void showAvailableGames(ArrayList<E> listOfGames){
+    private <E extends Game> void showAvailableGames(ArrayList<E> listOfGames){
         int gameId = 0;
         for(E game : listOfGames){
             System.out.println(gameId + ". " + game.getGameName());
             gameId++;
         }
-    }
+    }(
+    (
+     */
 
     private String inputString(){
         String input;

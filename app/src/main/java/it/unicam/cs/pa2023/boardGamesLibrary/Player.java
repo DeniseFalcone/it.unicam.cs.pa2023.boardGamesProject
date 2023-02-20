@@ -3,13 +3,12 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Player<E extends DefaultGame> {
+public interface Player{
 
     Piece selectPiece();
 
     Coordinate insertCoordinate();
 
-
-    E chooseGame(ArrayList<E> listOfGames);
+    String getName();
 
 }

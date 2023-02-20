@@ -9,14 +9,14 @@ import java.util.Optional;
  * Descrive un'azione del player durante il suo turno.
  */
 @FunctionalInterface
-public interface Action<B extends DefaultBoard> {
+public interface Action<B extends Board> {
 
 
     //Cambia lo stato della board eseguendo l'azione da essa validata
     // 0, x,y,z --> inserendo (prima non c'era, dopo si)
     // x,y,z, 0 --> cancellare
     // 0 0 --> cancella tutto
-    DefaultBoard doAction(Optional<Coordinate> oldCoordinate, Optional<Coordinate> newCoordinate, B board, Piece piece);
+    B doAction(Optional<Coordinate> oldCoordinate, Optional<Coordinate> newCoordinate, B board, Piece piece);
 
     default Coordinate verticalMovement(Coordinate coordinate, int n_steps){
         if(n_steps == 0){

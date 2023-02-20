@@ -3,7 +3,7 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class DefaultBoard<A extends DefaultAction> implements Board<A> {
+public class DefaultBoard implements Board {
 
     private ArrayList<Cell> board;
     private int width, height, numberOfBoard;
@@ -59,7 +59,7 @@ public class DefaultBoard<A extends DefaultAction> implements Board<A> {
 
     //ToDO
     @Override
-    public boolean isActionValid(A action) {
+    public boolean isActionValid(Coordinate coordinate) {
         return false;
     }
 

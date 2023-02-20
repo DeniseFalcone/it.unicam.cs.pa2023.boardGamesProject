@@ -4,7 +4,7 @@ import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
 
-public interface Rule {
+public interface Rule<B extends Board> {
 
 
     /**
@@ -13,8 +13,9 @@ public interface Rule {
      * The function is called "apply_rule" because it applies the rule of the game to the piece and the board state
      *
      * @param piece The piece that is being placed on the board.
-     * @param board_state A list of all the cells on the board.
+     * @param board A list of all the cells on the board.
      * @return A boolean value.
      */
-    boolean apply_rule(Piece piece, List<Cell> board_state);
+    boolean applyRule(Piece piece, B board, Coordinate coordinate);
+
 }

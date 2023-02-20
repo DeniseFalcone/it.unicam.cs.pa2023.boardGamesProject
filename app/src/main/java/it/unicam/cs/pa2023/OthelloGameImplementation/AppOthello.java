@@ -15,8 +15,20 @@ public class AppOthello {
         ArrayList<OthelloRule> othelloRules = new ArrayList<>();
         ArrayList<OthelloPlayer> othelloPlayers = new ArrayList<>();
         OthelloBoard othelloBoard = new OthelloBoard(8,8,1);
-        OthelloGame othelloGame = new OthelloGame(othelloRules, othelloPlayers, "Othello", othelloBoard);
+        OthelloGame othelloGame = new OthelloGame(othelloRules, othelloPlayers, "Othello", othelloBoard, createOthelloCoordinateMapper());
         othelloGame.playGame(othelloPlayers.get(0));
     }
 
+    private static OthelloCoordinateMapper createOthelloCoordinateMapper(){
+        Map<Character, Integer> map = new HashMap<>();
+        map.putIfAbsent(Character.valueOf('a'), Integer.valueOf(1));
+        map.putIfAbsent(Character.valueOf('b'), Integer.valueOf(2));
+        map.putIfAbsent(Character.valueOf('c'), Integer.valueOf(3));
+        map.putIfAbsent(Character.valueOf('d'), Integer.valueOf(4));
+        map.putIfAbsent(Character.valueOf('e'), Integer.valueOf(5));
+        map.putIfAbsent(Character.valueOf('f'), Integer.valueOf(6));
+        map.putIfAbsent(Character.valueOf('g'), Integer.valueOf(7));
+        map.putIfAbsent(Character.valueOf('h'), Integer.valueOf(8));
+        return new OthelloCoordinateMapper(map);
+    }
 }
