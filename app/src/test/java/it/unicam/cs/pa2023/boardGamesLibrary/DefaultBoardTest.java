@@ -2,6 +2,7 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -43,7 +44,7 @@ public class DefaultBoardTest {
         Integer x=1, y=4, z=1;
         Coordinate coordinate = new Coordinate(x,y,z);
         Cell testCell = new Cell(coordinate, Colors.LIGHT, Optional.empty());
-        assertEquals(testCell, board.getCellFromCoordinate(coordinate));
+        assertEquals(testCell, board.getCellFromCoordinate(coordinate).get());
     }
 
     @Test
@@ -93,6 +94,22 @@ public class DefaultBoardTest {
         action.doAction(Optional.empty(), Optional.of(coordinate2), board, rook);
         action.doAction(Optional.empty(), Optional.of(coordinate3), board, pawn);
         assertTrue(board.removeAllPieces());
+    }
+
+
+    @Test
+    public void getCellsFromDirectionTest(){
+        DefaultBoard board = new DefaultBoard(8,8,1, Colors.DARK);
+        Coordinate coordinate1 = new Coordinate(Integer.valueOf(6), Integer.valueOf(8), Integer.valueOf(1));
+        Integer[] direction = {Integer.valueOf(1),Integer.valueOf(0),Integer.valueOf(0)};
+        ArrayList<Cell> cells = new ArrayList<>();
+        Coordinate coordinate2 = new Coordinate(Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(1));
+        Coordinate coordinate3 = new Coordinate(Integer.valueOf(8), Integer.valueOf(8), Integer.valueOf(1));
+        cells.add(board.getCellFromCoordinate(coordinate2).get());
+        cells.add(board.getCellFromCoordinate(coordinate3).get());
+        assertEquals(cells,board.getCellsFromDirection(coordinate1,direction));
+        Coordinate coordinate4 = new Coordinate(Integer.valueOf(5), Integer.valueOf(8), Integer.valueOf(1));
+        assertNotEquals(cells,board.getCellsFromDirection(coordinate4,direction));
     }
 
 }

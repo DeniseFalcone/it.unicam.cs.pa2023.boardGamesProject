@@ -64,13 +64,13 @@ public class DefaultBoard implements Board {
     }
 
     @Override
-    public Cell getCellFromCoordinate(Coordinate coordinate) {
+    public Optional<Cell> getCellFromCoordinate(Coordinate coordinate) {
         for(Cell cell : this.getBoard()){
             if(cell.getCoordinate().equals(coordinate)){
-                return cell;
+                return Optional.of(cell);
             }
         }
-        throw new NullPointerException("The passed coordinate is not valid.");
+        return Optional.empty();
     }
 
     @Override
@@ -108,6 +108,18 @@ public class DefaultBoard implements Board {
         return checkIfBoardIsEmpty();
     }
 
+    @Override
+    public ArrayList<Cell> getCellsFromDirection(Coordinate coordinate, Integer[] direction) {
+        Action<DefaultBoard> action = new DefaultAction<>();
+        ArrayList<Cell> cells = new ArrayList<>();
+        while(getCellFromCoordinate(action.getCoordinateFromDirection(coordinate, direction[0], direction[1], direction[2])).isPresent()){
+            Cell cell = getCellFromCoordinate(action.getCoordinateFromDirection(coordinate,direction[0], direction[1], direction[2])).get();
+            cells.add(cell);
+            coordinate = action.getCoordinateFromDirection(coordinate, direction[0], direction[1], direction[2]);
+        }
+        return cells;
+    }
+
     private boolean checkIfBoardIsEmpty(){
         for (Cell cell : this.getBoard()){
             if(cell.getPieceOptional().isPresent()){
@@ -119,9 +131,25 @@ public class DefaultBoard implements Board {
 
     @Override
     public void replacePieceInCell(Coordinate newCoordinate, Optional<Piece> piece) {
-        Cell cell = getCellFromCoordinate(newCoordinate);
-        cell.setPieceOptional(piece);
-        this.getBoard().set(this.getBoard().indexOf(cell), cell);
+        Optional<Cell> cell = getCellFromCoordinate(newCoordinate);
+        if(cell.isPresent()){
+            cell.get().setPieceOptional(piece);
+            this.getBoard().set(this.getBoard().indexOf(cell.get()), cell.get());
+        }
+    }
+
+    public ArrayList<Optional<Cell>> getCellNeighbours(Coordinate coordinate){
+        DefaultAction<DefaultBoard> action = new DefaultAction<>();
+        ArrayList<Optional<Cell>> neighboursCell = new ArrayList<>();
+        neighboursCell.add(getCellFromCoordinate(action.verticalMovement(coordinate,1)));
+        neighboursCell.add(getCellFromCoordinate(action.verticalMovement(coordinate,-1)));
+        neighboursCell.add(getCellFromCoordinate(action.horizontalMovement(coordinate,1)));
+        neighboursCell.add(getCellFromCoordinate(action.horizontalMovement(coordinate,-1)));
+        neighboursCell.add(getCellFromCoordinate(action.diagonalMovement(coordinate,-1,1)));
+        neighboursCell.add(getCellFromCoordinate(action.diagonalMovement(coordinate,-1,-1)));
+        neighboursCell.add(getCellFromCoordinate(action.diagonalMovement(coordinate,1,1)));
+        neighboursCell.add(getCellFromCoordinate(action.diagonalMovement(coordinate,1,-1)));
+        return neighboursCell;
     }
 
     public ArrayList<Cell> getBoard() {

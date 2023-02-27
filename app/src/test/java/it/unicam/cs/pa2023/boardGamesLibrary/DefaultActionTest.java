@@ -27,10 +27,10 @@ public class DefaultActionTest {
                 () -> action.horizontalMovement(coordinate,0));
         assertEquals("The number of steps passed is not valid. Insert a valid number.", exception2.getMessage());
         resultCoordinate = new Coordinate(Integer.valueOf(2), Integer.valueOf(5),z);
-        assertEquals(resultCoordinate,action.diagonalMovement(coordinate,1));
+        assertEquals(resultCoordinate,action.diagonalMovement(coordinate,1,1));
         Exception exception3 = assertThrows(
                 IllegalArgumentException.class,
-                () -> action.diagonalMovement(coordinate,0));
+                () -> action.diagonalMovement(coordinate,0,0));
         assertEquals("The number of steps passed is not valid. Insert a valid number.", exception3.getMessage());
         resultCoordinate = new Coordinate(x,y,Integer.valueOf(3));
         assertEquals(resultCoordinate,action.changeBoard(coordinate,3));
@@ -60,8 +60,8 @@ public class DefaultActionTest {
         Coordinate coordinate2 = new Coordinate(Integer.valueOf(3), Integer.valueOf(4), z);
         Coordinate coordinate3 = new Coordinate(Integer.valueOf(7), Integer.valueOf(4), z);
         action.doAction(Optional.empty(),Optional.of(coordinate2), board, queen);
-        assertNotEquals(Optional.empty(), action.doAction(Optional.of(coordinate2), Optional.of(coordinate3),board,queen).getCellFromCoordinate(coordinate3).getPieceOptional());
-        assertEquals(Optional.of(queen), action.doAction(Optional.of(coordinate2), Optional.of(coordinate3), board, queen).getCellFromCoordinate(coordinate3).getPieceOptional());
+        assertNotEquals(Optional.empty(), action.doAction(Optional.of(coordinate2), Optional.of(coordinate3),board,queen).getCellFromCoordinate(coordinate3).get().getPieceOptional());
+        assertEquals(Optional.of(queen), action.doAction(Optional.of(coordinate2), Optional.of(coordinate3), board, queen).getCellFromCoordinate(coordinate3).get().getPieceOptional());
         Exception exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> action.doAction(Optional.empty(), Optional.empty(), board, queen));

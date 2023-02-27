@@ -32,11 +32,15 @@ public interface Action<B extends Board> {
         return new Coordinate(coordinate.getX() + n_steps, coordinate.getY(), coordinate.getZ());
     }
 
-    default Coordinate diagonalMovement(Coordinate coordinate, int n_steps){
-        if(n_steps == 0){
+    default Coordinate diagonalMovement(Coordinate coordinate, int x_steps, int y_steps){
+        if(y_steps == 0 || x_steps == 0){
             throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
         }
-        return new Coordinate(coordinate.getX() + n_steps, coordinate.getY() + n_steps, coordinate.getZ());
+        return new Coordinate(coordinate.getX() + x_steps, coordinate.getY() + y_steps, coordinate.getZ());
+    }
+
+    default Coordinate getCoordinateFromDirection(Coordinate coordinate, int x, int y, int z){
+        return new Coordinate(coordinate.getX() + x, coordinate.getY() + y, coordinate.getZ() + z);
     }
 
     default Coordinate changeBoard(Coordinate coordinate, int n_board){

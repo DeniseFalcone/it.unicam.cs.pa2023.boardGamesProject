@@ -4,31 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3671e56-e5c4-4b4f-ac87-f28a73797a66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java" afterDir="false" />
+    <list default="true" id="c3671e56-e5c4-4b4f-ac87-f28a73797a66" name="Changes" comment="Started implementation of Othello and fixed some bugs">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/AppOthello.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/AppOthello.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,29 +73,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "17"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Denise/OneDrive - Università di Camerino/Documenti/Workspace Java/Battaglia Navale&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Gradle.DefaultCoordinateMapperTest">
-    <configuration name="AppOthello" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unicam.cs.pa2023.OthelloGameImplementation.AppOthello" />
-      <module name="it.unicam.cs.pa2023.boardGamesProject.app.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unicam.cs.pa2023.OthelloGameImplementation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}</component>
+  <component name="RunManager" selected="Gradle.DefaultBoardTest.getCellsFromDirectionTest">
     <configuration name="DefaultActionTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -147,6 +121,29 @@
             <option value=":app:test" />
             <option value="--tests" />
             <option value="&quot;it.unicam.cs.pa2023.boardGamesLibrary.DefaultBoardTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="DefaultBoardTest.getCellsFromDirectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;it.unicam.cs.pa2023.boardGamesLibrary.DefaultBoardTest.getCellsFromDirectionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -204,11 +201,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DefaultBoardTest.getCellsFromDirectionTest" />
+        <item itemvalue="Gradle.DefaultPlayerTest" />
         <item itemvalue="Gradle.DefaultCoordinateMapperTest" />
         <item itemvalue="Gradle.DefaultBoardTest" />
-        <item itemvalue="Gradle.DefaultPlayerTest" />
         <item itemvalue="Gradle.DefaultActionTest (1)" />
-        <item itemvalue="Application.AppOthello" />
       </list>
     </recent_temporary>
   </component>
@@ -221,6 +218,14 @@
       <option name="presentableId" value="Default" />
       <updated>1676822881790</updated>
     </task>
+    <task id="LOCAL-00001" summary="Started implementation of Othello and fixed some bugs">
+      <created>1676912712859</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676912712859</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -233,5 +238,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Started implementation of Othello and fixed some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started implementation of Othello and fixed some bugs" />
   </component>
 </project>

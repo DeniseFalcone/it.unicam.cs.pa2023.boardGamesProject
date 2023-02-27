@@ -1,6 +1,5 @@
 package it.unicam.cs.pa2023.OthelloGameImplementation;
 
-import it.unicam.cs.pa2023.boardGamesLibrary.Board;
 import it.unicam.cs.pa2023.boardGamesLibrary.Coordinate;
 import it.unicam.cs.pa2023.boardGamesLibrary.DefaultRule;
 import it.unicam.cs.pa2023.boardGamesLibrary.Piece;
