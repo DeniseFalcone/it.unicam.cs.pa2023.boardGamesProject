@@ -4,6 +4,8 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 public class GameState<B extends Board, P extends Player> {
 
     private B board;
+
+    //Player che deve giocare il turno successivo a quello salvato
     private P player;
     private int turnNumber;
 

@@ -37,7 +37,7 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
     public abstract void setupGame();
 
     @Override
-    public abstract void playGame(T player);
+    public abstract boolean playGame(T player);
 
     @Override
     public abstract boolean getStatistics(T player);

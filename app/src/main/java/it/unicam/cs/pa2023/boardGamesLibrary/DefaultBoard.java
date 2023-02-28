@@ -57,11 +57,6 @@ public class DefaultBoard implements Board {
         return board;
     }
 
-    //ToDO
-    @Override
-    public boolean isActionValid(Coordinate coordinate) {
-        return false;
-    }
 
     @Override
     public Optional<Cell> getCellFromCoordinate(Coordinate coordinate) {

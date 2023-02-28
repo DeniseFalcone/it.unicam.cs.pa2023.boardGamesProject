@@ -5,9 +5,6 @@ import java.util.Optional;
 
 public interface Board{
 
-    //Prend la coordinata dell'azione già calcolata e ne controlla la correttezza in termini spaziali
-    //es. coord. 9,2,2 con scacchiera max 8,8,1 da' errore.
-    boolean isActionValid(Coordinate coordinate);
 
     Optional<Cell> getCellFromCoordinate(Coordinate coordinates);
 

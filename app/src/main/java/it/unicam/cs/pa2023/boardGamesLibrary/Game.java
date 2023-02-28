@@ -2,7 +2,7 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 public interface Game<T extends Player, K extends Rule, B extends Board> {
 
-    void playGame(T player);
+    boolean playGame(T player);
 
     void setupGame();
 

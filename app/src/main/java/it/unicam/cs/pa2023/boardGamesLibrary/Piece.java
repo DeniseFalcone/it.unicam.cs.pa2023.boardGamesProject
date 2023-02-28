@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Piece {
 
-    private final Colors color;
-    private final Integer value;
-    private final String name;
+    private Colors color;
+    private Integer value;
+    private String name;
 
     public Piece(Colors color, Integer value, String name) {
         this.color = color;
@@ -16,6 +16,18 @@ public class Piece {
 
     public Colors getColor() {
         return color;
+    }
+
+    public void setColor(Colors color) {
+        this.color = color;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getValue() {

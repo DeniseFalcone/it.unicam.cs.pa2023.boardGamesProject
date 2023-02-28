@@ -1,5 +1,6 @@
 package it.unicam.cs.pa2023.OthelloGameImplementation;
 
+import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.InsertPieceRule;
 import it.unicam.cs.pa2023.boardGamesLibrary.*;
 
 import java.util.ArrayList;
@@ -16,13 +17,26 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
 
     //non e' considerato metodo implementato perche' passiamo OthelloPlayer al posto di P extends Player
     @Override
-    public void playGame(OthelloPlayer player) {
+    public boolean playGame(OthelloPlayer player) {
+        GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.getGameBoard(), player, this.getTurn());
+        this.getGameStateHistory().add(gameState);
         if(this.getTurn()==0){
             if(player.getColor() == Colors.DARK){
                 Coordinate actionCoordinate = player.insertCoordinate();
-                //rules
+                for(OthelloRule rule: this.getGameRules()){
+                    if(!rule.applyRule(player.getPlayersPieces().remove(player.getPlayersPieces().size()-1), this.getGameBoard(), actionCoordinate)){
+                        this.setGameBoard(gameState.getBoard());
+                        this.getPlayers().set(this.getPlayers().indexOf(player), gameState.getPlayer());
+                        System.out.println("You can't make this action.");
+                        playGame(this.getPlayers().get(this.getPlayers().indexOf(player)));
+                    }else{
+                        this.setTurn(this.getTurn()+1);
+                        return true;
+                    }
+                }
             }
         }
+        return false;
     }
 
     //todo
@@ -72,10 +86,10 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
      * @return An ArrayList of Piece objects.
      */
     private ArrayList<Piece> createPlayerPieces(Colors color){
-        Piece blackPiece = new Piece(Colors.DARK, Integer.valueOf(1), "pedina");
         ArrayList<Piece> playerPieces = new ArrayList<>();
         for(int i=0; i<64;i++){
-            playerPieces.add(blackPiece);
+            Piece piece = new Piece(color, Integer.valueOf(1), "piece");
+            playerPieces.add(piece);
         }
         return  playerPieces;
     }
