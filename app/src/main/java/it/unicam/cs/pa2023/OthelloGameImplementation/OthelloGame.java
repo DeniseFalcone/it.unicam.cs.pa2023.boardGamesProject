@@ -1,5 +1,6 @@
 package it.unicam.cs.pa2023.OthelloGameImplementation;
 
+import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.ChangeColorRule;
 import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.InsertPieceRule;
 import it.unicam.cs.pa2023.boardGamesLibrary.*;
 
@@ -39,12 +40,23 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         return false;
     }
 
+
+
     //todo
     @Override
     public void setupGame(){
         setupPlayers();
         setupBoard();
+
         //regole
+    }
+
+    private void setupRules(){
+        ChangeColorRule changeColorRule = new ChangeColorRule();
+        InsertPieceRule insertPieceRule = new InsertPieceRule();
+        ArrayList<OthelloRule> othelloRules = new ArrayList<>();
+        this.addRule(changeColorRule);
+        this.addRule(insertPieceRule);
     }
 
     /**

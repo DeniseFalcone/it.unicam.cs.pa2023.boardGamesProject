@@ -11,7 +11,5 @@ public class OthelloRule extends DefaultRule<OthelloBoard> {
         return false;
     }
 
-    private boolean checkNeighbours(Coordinate coordinate, OthelloBoard board) {
-        return false;
-    }
+
 }
