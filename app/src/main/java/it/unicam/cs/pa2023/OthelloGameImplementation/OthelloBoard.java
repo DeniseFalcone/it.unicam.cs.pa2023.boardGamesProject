@@ -35,4 +35,6 @@ public class OthelloBoard extends DefaultBoard {
     }
 
 
+
+
 }

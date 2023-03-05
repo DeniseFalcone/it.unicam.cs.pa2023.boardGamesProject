@@ -33,8 +33,7 @@ public class DefaultPlayerTest {
 
     @Test
     public void insertCoordinateTest(){
-        ArrayList<Piece> pieceList= new ArrayList<Piece>();
-        DefaultPlayer player = new DefaultPlayer("Denise", Colors.DARK, pieceList, 0, coordinateMapper);
+        DefaultPlayer player = new DefaultPlayer("Denise", Colors.DARK,0, coordinateMapper);
         String userInput1 = "c,6,3";
         ByteArrayInputStream input1 = new ByteArrayInputStream(userInput1.getBytes());
         System.setIn(input1);

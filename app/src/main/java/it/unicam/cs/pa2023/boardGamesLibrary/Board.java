@@ -26,4 +26,7 @@ public interface Board{
     ArrayList<Optional<Cell>> getCellNeighbours(Coordinate coordinate);
 
     void replacePieceInCell(Coordinate newCoordinate, Optional<Piece> piece);
+
+    boolean checkIfCoordinateIsValid(Coordinate coordinate);
+
 }

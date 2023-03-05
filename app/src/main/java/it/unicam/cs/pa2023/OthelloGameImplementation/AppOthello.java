@@ -16,7 +16,7 @@ public class AppOthello {
         ArrayList<OthelloPlayer> othelloPlayers = new ArrayList<>();
         OthelloBoard othelloBoard = new OthelloBoard(8,8,1);
         OthelloGame othelloGame = new OthelloGame(othelloRules, othelloPlayers, "Othello", othelloBoard, createOthelloCoordinateMapper());
-        othelloGame.playGame(othelloPlayers.get(0));
+        othelloGame.playGame();
     }
 
     private static OthelloCoordinateMapper createOthelloCoordinateMapper(){

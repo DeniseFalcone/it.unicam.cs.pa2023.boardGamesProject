@@ -57,6 +57,10 @@ public class DefaultBoard implements Board {
         return board;
     }
 
+    @Override
+    public boolean checkIfCoordinateIsValid(Coordinate coordinate) {
+        return this.getCellFromCoordinate(coordinate).isPresent();
+    }
 
     @Override
     public Optional<Cell> getCellFromCoordinate(Coordinate coordinate) {

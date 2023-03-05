@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class OthelloPlayer extends DefaultPlayer<OthelloCoordinateMapper> {
 
-    public OthelloPlayer(String name, Colors color, ArrayList<Piece> playersPieces, int score, OthelloCoordinateMapper coordinateMapper) {
-        super(name, color, playersPieces, score, coordinateMapper);
+    public OthelloPlayer(String name, Colors color, int score, OthelloCoordinateMapper coordinateMapper) {
+        super(name, color, score, coordinateMapper);
     }
 }

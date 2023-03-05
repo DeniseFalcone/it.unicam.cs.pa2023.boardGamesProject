@@ -8,12 +8,13 @@ import java.util.*;
 
 public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, OthelloBoard, OthelloCoordinateMapper> {
 
+
+    //sistemare così che non prende input
     public OthelloGame(ArrayList<OthelloRule> gameRules, ArrayList<OthelloPlayer> players, String gameName, OthelloBoard gameBoard, OthelloCoordinateMapper othelloCoordinateMapper) {
         super(gameRules, players, gameName, gameBoard, othelloCoordinateMapper);
     }
 
-
-    //non e' considerato metodo implementato perche' passiamo OthelloPlayer al posto di P extends Player
+    /*
     @Override
     public boolean playGame(OthelloPlayer player) {
         GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.getGameBoard(), player, this.getTurn());
@@ -42,8 +43,50 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         }
         return false;
     }
+     */
 
+    private void playTurn(OthelloPlayer player){
+        GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.getGameBoard(), player, this.getTurn());
+        this.getGameStateHistory().add(gameState);
+        Coordinate turnCoordinate = getValidCoordinate(player);
+        Piece playerPiece = this.getGamePieces().remove(0);
+        playerPiece.setColor(player.getColor());
+        for (OthelloRule rule : this.getGameRules()) {
+            if(!rule.applyRule(playerPiece,this.getGameBoard(),turnCoordinate)){
+                this.setGameBoard(gameState.getBoard());
+                System.out.println("You can't make this action.");
+                playTurn(gameState.getPlayer());
+            }else{
+                this.setTurn(this.getTurn() + 1);
+            }
+        }
+    }
 
+    public void playGame(){
+        OthelloPlayer player = this.getPlayers().get(0);
+        boolean gameEnded = false;
+        while(!gameEnded){
+            if(playerCanPlayTurn(player)){
+                playTurn(player);
+                player = switchPlayer(player);
+            }else{
+                player = switchPlayer(player);
+                if(!playerCanPlayTurn(player)){
+                    gameEnded = true;
+                }
+            }
+        }
+    }
+
+    private Coordinate getValidCoordinate(OthelloPlayer player){
+        Coordinate coordinate;
+        do{
+            System.out.println("Insert a valid coordinate to insert a piece.");
+            coordinate = player.insertCoordinate();
+        }
+        while(!this.getGameBoard().checkIfCoordinateIsValid(coordinate));
+        return coordinate;
+    }
 
     //todo
     @Override
@@ -68,29 +111,52 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
      * the fifth is the coordinate mapper
      */
     private void setupPlayers(){
-        OthelloPlayer player1 = new OthelloPlayer("Player1", Colors.DARK, createPlayerPieces(Colors.DARK), 2, getDefaultCoordinateMapper());
-        OthelloPlayer player2 = new OthelloPlayer("Player2", Colors.LIGHT, createPlayerPieces(Colors.LIGHT), 2, getDefaultCoordinateMapper());
+        OthelloPlayer player1 = new OthelloPlayer("Player1", Colors.DARK, 2, getDefaultCoordinateMapper());
+        OthelloPlayer player2 = new OthelloPlayer("Player2", Colors.LIGHT,2, getDefaultCoordinateMapper());
         this.addPlayer(player1);
         this.addPlayer(player2);
     }
 
-    /**
+    /*
+     * Troppo lungo
      * This function sets up the board for the game
-     */
+
     private void setupBoard(){
-        Coordinate coordinate = new Coordinate(Integer.valueOf(4), Integer.valueOf(4), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(1).getPlayersPieces().get(0)));
-        coordinate = new Coordinate(Integer.valueOf(5), Integer.valueOf(5), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(1).getPlayersPieces().get(1)));
-        this.getPlayers().get(1).getPlayersPieces().remove(0);
-        this.getPlayers().get(1).getPlayersPieces().remove(1);
-        coordinate = new Coordinate(Integer.valueOf(5), Integer.valueOf(4), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(0).getPlayersPieces().get(0)));
-        coordinate = new Coordinate(Integer.valueOf(4), Integer.valueOf(5), 1);
-        this.getGameBoard().replacePieceInCell(coordinate, Optional.of(this.getPlayers().get(0).getPlayersPieces().get(1)));
-        this.getPlayers().get(0).getPlayersPieces().remove(0);
-        this.getPlayers().get(0).getPlayersPieces().remove(1);
+        Coordinate coordinate1 = new Coordinate(Integer.valueOf(4), Integer.valueOf(4), 1);
+        Coordinate coordinate2 = new Coordinate(Integer.valueOf(5), Integer.valueOf(5), 1);
+        Coordinate coordinate3 = new Coordinate(Integer.valueOf(5), Integer.valueOf(4), 1);
+        Coordinate coordinate4 = new Coordinate(Integer.valueOf(4), Integer.valueOf(5), 1);
+        Piece whitePiece = this.getGamePieces().remove(0);
+        whitePiece.setColor(Colors.LIGHT);
+        this.getGameBoard().replacePieceInCell(coordinate1, Optional.of(whitePiece));
+        whitePiece = this.getGamePieces().remove(0);
+        whitePiece.setColor(Colors.LIGHT);
+        this.getGameBoard().replacePieceInCell(coordinate2, Optional.of(whitePiece));
+        Piece blackPiece = this.getGamePieces().remove(0);
+        blackPiece.setColor(Colors.DARK);
+        this.getGameBoard().replacePieceInCell(coordinate3, Optional.of(blackPiece));
+        blackPiece = this.getGamePieces().remove(0);
+        blackPiece.setColor(Colors.DARK);
+        this.getGameBoard().replacePieceInCell(coordinate4, Optional.of(blackPiece));
     }
+    */
+
+    private void setupBoard() {
+        Coordinate[] coordinates = {
+                new Coordinate(4, 4, 1),
+                new Coordinate(5, 5, 1),
+                new Coordinate(5, 4, 1),
+                new Coordinate(4, 5, 1)
+        };
+        Colors[] colors = {Colors.LIGHT, Colors.LIGHT, Colors.DARK, Colors.DARK};
+        for (int i = 0; i < coordinates.length; i++) {
+            Piece piece = this.getGamePieces().remove(0);
+            piece.setColor(colors[i]);
+            this.getGameBoard().replacePieceInCell(coordinates[i], Optional.of(piece));
+        }
+    }
+
+
 
     /**
      * It creates 64 pieces of the same color and returns them in an ArrayList
@@ -120,10 +186,12 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
 
 
     protected boolean playerCanPlayTurn(OthelloPlayer player){
+        Piece playerPiece = this.getGamePieces().get(0);
+        playerPiece.setColor(player.getColor());
         for(Cell cell: this.getGameBoard().getBoard()){
             OthelloBoard tempBoard = this.getGameBoard();
             if(getGameRules().stream()
-                    .allMatch(x -> x.applyRule(player.getPlayersPieces().get(0), tempBoard, cell.getCoordinate()))){
+                    .allMatch(x -> x.applyRule(playerPiece, tempBoard, cell.getCoordinate()))){
                 return true;
             }
         }

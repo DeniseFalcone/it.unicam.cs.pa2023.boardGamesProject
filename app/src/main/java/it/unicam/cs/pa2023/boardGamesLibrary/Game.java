@@ -2,7 +2,7 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 public interface Game<T extends Player, K extends Rule, B extends Board> {
 
-    boolean playGame(T player);
+    void playGame();
 
     void setupGame();
 
@@ -22,11 +22,9 @@ public interface Game<T extends Player, K extends Rule, B extends Board> {
 
     boolean removeLastGameState();
 
-    boolean addPlayerPiece(Piece piece, T player);
-
-    boolean removePlayerPiece(Piece piece, T player);
-
     boolean updatePlayerScore(T player);
 
     String getGameName();
+
+    T switchPlayer(T player);
 }
