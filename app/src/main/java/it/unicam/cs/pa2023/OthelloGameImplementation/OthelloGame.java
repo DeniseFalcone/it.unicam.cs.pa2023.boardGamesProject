@@ -4,10 +4,7 @@ import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.ChangeColorRul
 import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.InsertPieceRule;
 import it.unicam.cs.pa2023.boardGamesLibrary.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, OthelloBoard, OthelloCoordinateMapper> {
 
@@ -21,9 +18,15 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     public boolean playGame(OthelloPlayer player) {
         GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.getGameBoard(), player, this.getTurn());
         this.getGameStateHistory().add(gameState);
+        if(!playerCanPlayTurn(player)){
+            //checkIfBothDidn'tPlayTurn
+            this.setTurn(this.getTurn()+1);
+            playGame(this.getPlayers().get(this.getPlayers().indexOf(player)));
+        }
         if(this.getTurn()==0){
             if(player.getColor() == Colors.DARK){
                 Coordinate actionCoordinate = player.insertCoordinate();
+                //accorciare magari con stream come altro metodo
                 for(OthelloRule rule: this.getGameRules()){
                     if(!rule.applyRule(player.getPlayersPieces().remove(player.getPlayersPieces().size()-1), this.getGameBoard(), actionCoordinate)){
                         this.setGameBoard(gameState.getBoard());
@@ -47,14 +50,12 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     public void setupGame(){
         setupPlayers();
         setupBoard();
-
-        //regole
+        setupRules();
     }
 
     private void setupRules(){
         ChangeColorRule changeColorRule = new ChangeColorRule();
         InsertPieceRule insertPieceRule = new InsertPieceRule();
-        ArrayList<OthelloRule> othelloRules = new ArrayList<>();
         this.addRule(changeColorRule);
         this.addRule(insertPieceRule);
     }
@@ -117,6 +118,17 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         return false;
     }
 
+
+    protected boolean playerCanPlayTurn(OthelloPlayer player){
+        for(Cell cell: this.getGameBoard().getBoard()){
+            OthelloBoard tempBoard = this.getGameBoard();
+            if(getGameRules().stream()
+                    .allMatch(x -> x.applyRule(player.getPlayersPieces().get(0), tempBoard, cell.getCoordinate()))){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
