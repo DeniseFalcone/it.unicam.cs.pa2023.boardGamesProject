@@ -6,7 +6,7 @@ public interface Game<T extends Player, K extends Rule, B extends Board> {
 
     void setupGame();
 
-    boolean getStatistics(T player);
+    void getStatistics();
 
     boolean addPlayer(T player);
 
@@ -22,7 +22,7 @@ public interface Game<T extends Player, K extends Rule, B extends Board> {
 
     boolean removeLastGameState();
 
-    boolean updatePlayerScore(T player);
+    void updatePlayersScore();
 
     String getGameName();
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultRule, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K, B> {
+public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K, B> {
 
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<K> gameRules;
@@ -18,22 +18,14 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
     private ArrayList<GameState<B,T>> gameStateHistory;
     private D defaultCoordinateMapper;
 
-    public DefaultGame(ArrayList<K> gameRules, ArrayList<T> players, String gameName, B gameBoard) {
-        this.gameRules = gameRules;
-        this.players = players;
-        this.gameName = gameName;
-        this.gameBoard = gameBoard;
+    public DefaultGame(){
+        this.gameRules = new ArrayList<>();
+        this.players = new ArrayList<>();
+        this.gameName = "";
+        this.gameBoard = null;
+        this.gamePieces = new ArrayList<>();
         this.gameStateHistory = new ArrayList<>();
         this.defaultCoordinateMapper = null;
-    }
-
-    public DefaultGame(ArrayList<K> gameRules, ArrayList<T> players, String gameName, B gameBoard, D defaultCoordinateMapper) {
-        this.gameRules = gameRules;
-        this.players = players;
-        this.gameName = gameName;
-        this.gameBoard = gameBoard;
-        this.gameStateHistory = new ArrayList<>();
-        this.defaultCoordinateMapper = defaultCoordinateMapper;
     }
 
     @Override
@@ -43,7 +35,11 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
     public abstract void playGame();
 
     @Override
-    public abstract boolean getStatistics(T player);
+    public void getStatistics(){
+        for(T player : this.getPlayers()){
+            System.out.println(player.toString());
+        }
+    }
 
     @Override
     public boolean addPlayer(T player) {
@@ -82,7 +78,7 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
     }
 
     @Override
-    public abstract boolean updatePlayerScore(T player);
+    public abstract void updatePlayersScore();
 
     public ArrayList<K> getGameRules() {
         return gameRules;

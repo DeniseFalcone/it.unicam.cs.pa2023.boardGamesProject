@@ -21,9 +21,9 @@ public class DefaultBoard implements Board {
         this.width = width;
         this.height = height;
         this.numberOfBoard = numberOfBoard;
-        this.board = createBoardCells(Colors.LIGHT);
+        this.board = createBoardCells(Colors.BASECOLOR);
         for (Cell c: this.getBoard()) {
-            c.setColor(Colors.LIGHT);
+            c.setColor(Colors.BASECOLOR);
         }
     }
 

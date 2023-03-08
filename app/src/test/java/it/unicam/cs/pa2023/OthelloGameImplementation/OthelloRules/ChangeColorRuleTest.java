@@ -19,16 +19,7 @@ public class ChangeColorRuleTest {
 
     @Before
     public void setUp() throws Exception {
-        //todo togliere changecolor passato, lo mette il game
-        ChangeColorRule changeColorRule = new ChangeColorRule();
-        ArrayList<OthelloRule> rules = new ArrayList<>();
-        ArrayList<OthelloPlayer> othelloPlayers = new ArrayList<>();
-        rules.add(changeColorRule);
-        OthelloBoard othelloBoard = new OthelloBoard(8,8,1);
-        Map<Character,Integer> map = new HashMap<>();
-        OthelloCoordinateMapper othelloCoordinateMapper = new OthelloCoordinateMapper(map);
-        this.othelloGame = new OthelloGame(rules, othelloPlayers, "Othello", othelloBoard, othelloCoordinateMapper);
-        this.othelloGame.setupGame();
+        this.othelloGame = new OthelloGame();
     }
 
     @Test
@@ -36,7 +27,7 @@ public class ChangeColorRuleTest {
         Piece pieceBlack = this.othelloGame.getGamePieces().get(0);
         pieceBlack.setColor(Colors.DARK);
         Coordinate coordinate1 = new Coordinate(Integer.valueOf(5),Integer.valueOf(2),Integer.valueOf(1));
-        //assertFalse(this.othelloGame.getGameRules().get(0).applyRule(pieceBlack, this.othelloGame.getGameBoard(), coordinate1));
+        assertFalse(this.othelloGame.getGameRules().get(0).applyRule(pieceBlack, this.othelloGame.getGameBoard(), coordinate1));
         Coordinate coordinate2 = new Coordinate(Integer.valueOf(3),Integer.valueOf(4),Integer.valueOf(1));
         assertTrue(this.othelloGame.getGameRules().get(0).applyRule(pieceBlack, this.othelloGame.getGameBoard(), coordinate2));
         Coordinate coordinate3 = new Coordinate(Integer.valueOf(3),Integer.valueOf(3),Integer.valueOf(1));

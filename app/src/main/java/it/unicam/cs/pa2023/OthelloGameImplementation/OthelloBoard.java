@@ -20,6 +20,13 @@ public class OthelloBoard extends DefaultBoard {
         return direction;
     }
 
+    /**
+     * It takes an array of cells and a color, and returns an array of cells that are the same color as the input color
+     *
+     * @param cells The cells that are being checked for the color.
+     * @param color The color of the piece that is being moved.
+     * @return The method is returning an ArrayList of Cells.
+     */
     public ArrayList<Cell> checkCellsColorOneDirection(ArrayList<Cell> cells, Colors color){
         ArrayList<Cell> temp = new ArrayList<>();
         for(Cell cell: cells){
@@ -29,11 +36,12 @@ public class OthelloBoard extends DefaultBoard {
                 }else{
                     return temp;
                 }
+            }else{
+                return null;
             }
         }
         return null;
     }
-
 
 
 

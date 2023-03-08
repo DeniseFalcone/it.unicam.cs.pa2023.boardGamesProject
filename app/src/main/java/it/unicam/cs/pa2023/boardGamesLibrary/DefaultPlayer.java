@@ -1,22 +1,39 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
-import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
 
     private int score;
-    private Scanner scanner;
     private String name;
     private Colors color;
-    private D defaultCoordinateMapper;
+    private D mapper;
 
-    public DefaultPlayer(String name, Colors color, int score, D defaultCoordinateMapper) {
+    public DefaultPlayer(String name, Colors color, int score, D mapper) {
         this.name = name;
         this.color = color;
         this.score = score;
-        this.defaultCoordinateMapper = defaultCoordinateMapper;
+        this.mapper = mapper;
+    }
+
+    @Override
+    public Coordinate insertCoordinate() {
+        System.out.println("Insert the coordinate you want separated by comma: ");
+        String coordinate = InputManager.getInstance().inputString().toLowerCase(Locale.ROOT);
+        if(checkCoordinateInput(coordinate)){
+            Integer[] coordinateValues = mapper.mapCoordinate(coordinate.split(","));
+            return new Coordinate(coordinateValues[0], coordinateValues[1], coordinateValues[2]);
+        }else{
+            System.out.println("The given coordinate is not valid.");
+            insertCoordinate();
+        }
+        return null;
+    }
+
+    private boolean checkCoordinateInput(String string){
+        return string != null && Pattern.matches("[a-zA-Z0-9,]+", string);
     }
 
     public String getName() {
@@ -39,81 +56,39 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
         return score;
     }
 
+    public D getMapper() {
+        return mapper;
+    }
+
+    public void setMapper(D mapper) {
+        this.mapper = mapper;
+    }
+
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public D getDefaultCoordinateMapper() {
-        return defaultCoordinateMapper;
-    }
-
-    public void setDefaultCoordinateMapper(D defaultCoordinateMapper) {
-        this.defaultCoordinateMapper = defaultCoordinateMapper;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DefaultPlayer<?> that = (DefaultPlayer<?>) o;
-        return getScore() == that.getScore() && Objects.equals(scanner, that.scanner) && Objects.equals(getName(), that.getName()) && getColor() == that.getColor() && Objects.equals(getDefaultCoordinateMapper(), that.getDefaultCoordinateMapper());
+        DefaultPlayer that = (DefaultPlayer) o;
+        return getScore() == that.getScore() && Objects.equals(getName(), that.getName()) && getColor() == that.getColor();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getScore(), scanner, getName(), getColor(), getDefaultCoordinateMapper());
+        return Objects.hash(getScore(), getName(), getColor());
     }
 
     @Override
     public String toString() {
-        return "DefaultPlayer: " +
-                "name='" + name + '\'' +
-                ", color=" + color;
+        return "Player " + name +
+                ", color = " + color +
+                ", score = " + score;
     }
 
 
 
-    @Override
-    public Coordinate insertCoordinate() {
-        System.out.println("Write the coordinate separated by comma: ");
-        this.scanner = new Scanner(System.in);
-        String input = inputString();
-        String[] coordinateInput = input.split(",");
-        Integer[] coordinates = mapCoordinate(coordinateInput);
-        return new Coordinate(coordinates[0], coordinates[1], coordinates[2]);
-    }
 
-    private Integer[] mapCoordinate(String[] inputCoordinate){
-        Integer[] coordinateArray = new Integer[3];
-        if(inputCoordinate.length == 2){
-            coordinateArray[2] = Integer.valueOf(1);
-        }
-        for (int i=0; i<inputCoordinate.length; i++) {
-            if(!isNumeric(inputCoordinate[i])){
-                Character character = Character.valueOf(inputCoordinate[i].toCharArray()[0]);
-                coordinateArray[i] = defaultCoordinateMapper.getValueFromMap(character);
-            }else{
-                coordinateArray[i] = Integer.parseInt(inputCoordinate[i]);
-            }
-        }
-        return coordinateArray;
-    }
-
-    private boolean isNumeric(String string) {
-        if (string == null) {
-            return false;
-        }
-        try {
-            double d = Double.parseDouble(string);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
-    }
-
-    private String inputString(){
-        String input;
-        input = this.scanner.next();
-        return input;
-    }
 }

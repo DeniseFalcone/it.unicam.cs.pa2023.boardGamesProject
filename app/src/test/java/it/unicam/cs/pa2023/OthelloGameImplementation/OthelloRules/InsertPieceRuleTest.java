@@ -19,16 +19,7 @@ public class InsertPieceRuleTest {
 
     @Before
     public void setUp() throws Exception {
-        //todo togliere changecolor passato, lo mette il game
-        InsertPieceRule insertPieceRule = new InsertPieceRule();
-        ArrayList<OthelloRule> rules = new ArrayList<>();
-        ArrayList<OthelloPlayer> othelloPlayers = new ArrayList<>();
-        rules.add(insertPieceRule);
-        OthelloBoard othelloBoard = new OthelloBoard(8,8,1);
-        Map<Character,Integer> map = new HashMap<>();
-        OthelloCoordinateMapper othelloCoordinateMapper = new OthelloCoordinateMapper(map);
-        this.othelloGame = new OthelloGame(rules, othelloPlayers, "Othello", othelloBoard, othelloCoordinateMapper);
-        this.othelloGame.setupGame();
+        this.othelloGame = new OthelloGame();
     }
 
     @Test

@@ -5,4 +5,6 @@ public interface CoordinateMapper {
     Character getKeyFromMap(Integer value);
 
     Integer getValueFromMap(Character key);
+
+    Integer[] mapCoordinate(String[] inputCoordinate);
 }

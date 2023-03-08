@@ -2,7 +2,7 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 public enum Colors {
 
-    DARK, LIGHT;
+    DARK, LIGHT, BASECOLOR;
 
 
     /**
@@ -14,6 +14,7 @@ public enum Colors {
         return switch (this){
             case DARK -> LIGHT;
             case LIGHT -> DARK;
+            case BASECOLOR -> BASECOLOR;
         };
     }
 
