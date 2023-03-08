@@ -16,7 +16,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
 
     }
 
-    protected void playTurn(OthelloPlayer player){
+    protected boolean playTurn(OthelloPlayer player){
         GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.cloneOthelloBoard(this.getGameBoard()), player, this.getTurn());
         OthelloOutputManager.getInstance().printBoard(this.getGameBoard(),this.getDefaultCoordinateMapper());
         Coordinate turnCoordinate = getValidCoordinate(player);
@@ -26,13 +26,15 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
             if(!rule.applyRule(playerPiece, this.getGameBoard(), turnCoordinate)){
                 this.setGameBoard(this.cloneOthelloBoard(gameState.getBoard()));
                 System.out.println("You can't make this action.");
-                playTurn(gameState.getPlayer());
+                this.getGamePieces().add(playerPiece);
+                return false;
             }
         }
         this.setTurn(this.getTurn() + 1);
         this.getGameStateHistory().add(gameState);
         updatePlayersScore();
         OthelloOutputManager.getInstance().printScore(this.getPlayers());
+        return true;
     }
 
     public void playGame(){
@@ -40,7 +42,10 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         boolean gameEnded = false;
         while(!gameEnded){
             if(playerCanPlayTurn(player)){
-                playTurn(player);
+                boolean validTurn = false;
+                while(!validTurn){
+                    validTurn = playTurn(player);
+                }
                 player = switchPlayer(player);
             }else{
                 player = switchPlayer(player);

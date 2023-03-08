@@ -4,28 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3671e56-e5c4-4b4f-ac87-f28a73797a66" name="Changes" comment="Finished the implementation of Othello.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloOutputManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/InputManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoardTest.java" afterDir="false" />
+    <list default="true" id="c3671e56-e5c4-4b4f-ac87-f28a73797a66" name="Changes" comment="Fixed some bugs and implemented a method to print the game board.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/AppOthello.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/AppOthello.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/CoordinateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/CoordinateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultCoordinateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultCoordinateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRuleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRuleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678043940333</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed some bugs and implemented a method to print the game board.">
+      <created>1678274394413</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678274394413</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -297,95 +285,56 @@
     <MESSAGE value="Adjusted methods responsability" />
     <MESSAGE value="Updated playGame in OthelloGame" />
     <MESSAGE value="Finished the implementation of Othello." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the implementation of Othello." />
+    <MESSAGE value="Fixed some bugs and implemented a method to print the game board." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs and implemented a method to print the game board." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="139" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="140" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="141" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="143" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="151" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="152" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
           <line>19</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="157" />
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
           <line>20</line>
-          <option name="timeStamp" value="158" />
+          <option name="timeStamp" value="176" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
           <line>21</line>
-          <option name="timeStamp" value="159" />
+          <option name="timeStamp" value="177" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="160" />
+          <line>18</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="183" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
