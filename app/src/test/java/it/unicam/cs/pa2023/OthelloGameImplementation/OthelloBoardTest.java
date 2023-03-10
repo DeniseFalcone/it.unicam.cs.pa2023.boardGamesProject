@@ -19,11 +19,11 @@ public class OthelloBoardTest {
         Coordinate coordinate1 = new Coordinate(4,5,1);
         Coordinate coordinate2 = new Coordinate(5,5,1);
         Integer[] direction1 = {1,0,0};
-        assertEquals(board.getDirection(coordinate1, coordinate2), direction1);
+        assertArrayEquals(board.getDirection(coordinate1, coordinate2), direction1);
         coordinate2.setX(4);
         coordinate2.setY(4);
         Integer[] direction2 = {0,-1,0};
-        assertEquals(board.getDirection(coordinate1, coordinate2), direction2);
+        assertArrayEquals(board.getDirection(coordinate1, coordinate2), direction2);
     }
 
     @Test

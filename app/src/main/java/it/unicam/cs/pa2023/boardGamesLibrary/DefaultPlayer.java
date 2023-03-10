@@ -2,7 +2,6 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Locale;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
 
@@ -20,20 +19,15 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
 
     @Override
     public Coordinate insertCoordinate() {
-        System.out.println("Insert the coordinate you want separated by comma: ");
+        System.out.println("Insert the coordinate of where you want to insert a piece, separated by comma: ");
         String coordinate = InputManager.getInstance().inputString().toLowerCase(Locale.ROOT);
-        if(checkCoordinateInput(coordinate)){
+        if(InputManager.getInstance().checkCoordinateInput(coordinate)){
             Integer[] coordinateValues = mapper.mapCoordinate(coordinate.split(","));
             return new Coordinate(coordinateValues[0], coordinateValues[1], coordinateValues[2]);
         }else{
             System.out.println("The given coordinate is not valid.");
-            insertCoordinate();
+            return insertCoordinate();
         }
-        return null;
-    }
-
-    private boolean checkCoordinateInput(String string){
-        return string != null && Pattern.matches("[a-zA-Z0-9,]+", string);
     }
 
     public String getName() {

@@ -36,23 +36,17 @@ public class DefaultPlayerTest {
         DefaultPlayer player = new DefaultPlayer("Denise", Colors.DARK,0, coordinateMapper);
         String userInput1 = "c,6,3";
         ByteArrayInputStream input1 = new ByteArrayInputStream(userInput1.getBytes());
-        Scanner scanner = new Scanner(System.in);
         System.setIn(input1);
-        InputManager.getInstance().setScanner(scanner);
         Coordinate coordinate1 = new Coordinate(Integer.valueOf(3),Integer.valueOf(6), Integer.valueOf(3));
         assertEquals(coordinate1,player.insertCoordinate());
         String userInput2 = "c,6";
         ByteArrayInputStream input2 = new ByteArrayInputStream(userInput2.getBytes());
-        scanner = new Scanner(System.in);
         System.setIn(input2);
-        InputManager.getInstance().setScanner(scanner);
         Coordinate coordinate2 = new Coordinate(Integer.valueOf(3),Integer.valueOf(6), Integer.valueOf(1));
         assertEquals(coordinate2,player.insertCoordinate());
         String userInput3 = "4,6,8";
         ByteArrayInputStream input3 = new ByteArrayInputStream(userInput3.getBytes());
-        scanner = new Scanner(System.in);
         System.setIn(input3);
-        InputManager.getInstance().setScanner(scanner);
         Coordinate coordinate3 = new Coordinate(Integer.valueOf(4),Integer.valueOf(6), Integer.valueOf(8));
         assertEquals(coordinate3,player.insertCoordinate());
     }

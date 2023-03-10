@@ -3,18 +3,16 @@ package it.unicam.cs.pa2023.OthelloGameImplementation;
 import it.unicam.cs.pa2023.boardGamesLibrary.Colors;
 import it.unicam.cs.pa2023.boardGamesLibrary.Coordinate;
 import it.unicam.cs.pa2023.boardGamesLibrary.Piece;
-
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class OthelloOutputManager {
 
     private static OthelloOutputManager othelloOutputManager;
-
-    private OthelloOutputManager(){
-
-    }
+    private OthelloOutputManager(){}
 
     public static OthelloOutputManager getInstance(){
         if (othelloOutputManager == null) {
@@ -27,35 +25,6 @@ public class OthelloOutputManager {
     public void printBoard(OthelloBoard board, OthelloCoordinateMapper mapper){
         printGrid(board, mapper);
     }
-
-    /*
-    private void printGrid2(OthelloBoard board, OthelloCoordinateMapper mapper) {
-        System.out.println("\n");
-        int row, cols;
-        System.out.print("  ");
-        for (cols = 1; cols <= board.getWidth(); cols++) {
-            System.out.print("  " + mapper.getKeyFromMap(cols) + " ");
-        }
-        System.out.println("\n  +---+---+---+---+---+---+---+---+ ");
-        for (row = 1; row <= board.getHeight(); row++) {
-            System.out.print(row + " | ");
-            for (cols = 0; cols < 10; cols++) {
-                if(board.getCellFromCoordinate(new Coordinate(cols, row,1)).isPresent()){
-                    if(board.getCellFromCoordinate(new Coordinate(cols, row,1)).get().getPieceOptional().isPresent()){
-                        if(board.getCellFromCoordinate(new Coordinate(cols, row,1)).get().getPieceOptional().get().getColor() == Colors.DARK){
-                            System.out.print( "B" + " | ");
-                        }else{
-                            System.out.print( "W" + " | ");
-                        }
-                    }else{
-                        System.out.print( " " + " | ");
-                    }
-                }
-            }
-            System.out.println("\n  +---+---+---+---+---+---+---+---+ ");
-        }
-    }
-    */
 
     private void printGrid(OthelloBoard board, OthelloCoordinateMapper mapper) {
         System.out.print("\n  " + IntStream.rangeClosed(1, board.getWidth())
@@ -77,8 +46,20 @@ public class OthelloOutputManager {
 
     public void printScore(ArrayList<OthelloPlayer> players){
         for (OthelloPlayer player : players) {
-            System.out.println("\nPlayer " +player.getColor()+ " score: " + player.getScore());
+            System.out.println("Player " +player.getName()+ " score: " + player.getScore());
         }
+    }
+
+    public void printTurnPlayer(OthelloPlayer player){
+        System.out.println("Player " + player.getName() + " turn.");
+    }
+
+    public void printWinner(ArrayList<OthelloPlayer> players){
+        OthelloPlayer winner = players.stream()
+                .max(Comparator.comparing(OthelloPlayer::getScore))
+                .orElseThrow(NoSuchElementException::new);
+        System.out.println("\nThe game is over!");
+        System.out.println("The winner is: " + winner.getName() + " with: " + winner.getScore() + " points.");
     }
 
 }

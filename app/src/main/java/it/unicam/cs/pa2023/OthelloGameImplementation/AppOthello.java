@@ -3,12 +3,6 @@
  */
 package it.unicam.cs.pa2023.OthelloGameImplementation;
 
-import it.unicam.cs.pa2023.boardGamesLibrary.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class AppOthello {
 
     public static void main(String[] args) {
@@ -17,9 +11,3 @@ public class AppOthello {
     }
 
 }
-
-//codici unicode per pedine
-//9898
-//9899
-
-//sequenza gioco: c,4 - c,3 - f,5

@@ -25,11 +25,11 @@ public class InsertPieceRuleTest {
     @Test
     public void applyRuleTest(){
         Piece piece = new Piece(Colors.LIGHT, Integer.valueOf(1), "piece");
-        Coordinate coordinate1 = new Coordinate(Integer.valueOf(3), Integer.valueOf(8), Integer.valueOf(1));
-        assertTrue(othelloGame.getGameRules().get(0).applyRule(piece, othelloGame.getGameBoard(), coordinate1));
+        Coordinate coordinate1 = new Coordinate(Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(1));
+        assertTrue(othelloGame.getGameRules().get(1).applyRule(piece, othelloGame.getGameBoard(), coordinate1));
         Coordinate coordinate2 = new Coordinate(Integer.valueOf(4), Integer.valueOf(4), Integer.valueOf(1));
-        assertFalse(othelloGame.getGameRules().get(0).applyRule(piece, othelloGame.getGameBoard(), coordinate2));
+        assertFalse(othelloGame.getGameRules().get(1).applyRule(piece, othelloGame.getGameBoard(), coordinate2));
         Coordinate coordinate3 = new Coordinate(Integer.valueOf(45), Integer.valueOf(8), Integer.valueOf(1));
-        assertFalse(othelloGame.getGameRules().get(0).applyRule(piece, othelloGame.getGameBoard(), coordinate3));
+        assertFalse(othelloGame.getGameRules().get(1).applyRule(piece, othelloGame.getGameBoard(), coordinate3));
     }
 }

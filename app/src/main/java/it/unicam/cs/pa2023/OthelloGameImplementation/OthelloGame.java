@@ -19,6 +19,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     protected boolean playTurn(OthelloPlayer player){
         GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.cloneOthelloBoard(this.getGameBoard()), player, this.getTurn());
         OthelloOutputManager.getInstance().printBoard(this.getGameBoard(),this.getDefaultCoordinateMapper());
+        OthelloOutputManager.getInstance().printTurnPlayer(player);
         Coordinate turnCoordinate = getValidCoordinate(player);
         Piece playerPiece = this.getGamePieces().remove(0);
         playerPiece.setColor(player.getColor());
@@ -37,6 +38,10 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         return true;
     }
 
+    /**
+     * The game is played until one player can't play a turn, then the other player is checked to see if they can play a
+     * turn. If they can't, the game is over.
+     */
     public void playGame(){
         OthelloPlayer player = this.getPlayers().get(0);
         boolean gameEnded = false;
@@ -54,12 +59,13 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
                 }
             }
         }
+        OthelloOutputManager.getInstance().printWinner(this.getPlayers());
+        InputManager.getInstance().closeScanner();
     }
 
     private Coordinate getValidCoordinate(OthelloPlayer player){
         Coordinate coordinate;
         do{
-            System.out.println("Player " + player.getColor().name() + " write a valid COORDINATE to insert a piece.");
             coordinate = player.insertCoordinate();
         }
         while(!this.getGameBoard().checkIfCoordinateIsValid(coordinate));
@@ -89,8 +95,8 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
      * the fifth is the coordinate mapper
      */
     private void setupPlayers(){
-        OthelloPlayer player1 = new OthelloPlayer("Player1", Colors.DARK, 2, this.getDefaultCoordinateMapper());
-        OthelloPlayer player2 = new OthelloPlayer("Player2", Colors.LIGHT,2, this.getDefaultCoordinateMapper());
+        OthelloPlayer player1 = new OthelloPlayer("Black", Colors.DARK, 2, this.getDefaultCoordinateMapper());
+        OthelloPlayer player2 = new OthelloPlayer("White", Colors.LIGHT,2, this.getDefaultCoordinateMapper());
         this.addPlayer(player1);
         this.addPlayer(player2);
     }
@@ -140,6 +146,9 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
 
 
     protected boolean playerCanPlayTurn(OthelloPlayer player){
+        if(this.getGamePieces().size() == 0){
+            return false;
+        }
         Piece playerPiece = this.getGamePieces().get(0);
         playerPiece.setColor(player.getColor());
         for(Cell cell: this.getGameBoard().getBoard()){
