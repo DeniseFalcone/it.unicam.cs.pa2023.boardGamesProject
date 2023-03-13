@@ -8,6 +8,14 @@ public class DefaultBoard implements Board {
     private ArrayList<Cell> board;
     private int width, height, numberOfBoard;
 
+    /**
+     * DefaultBoard constructor that creates the board changing the color of the cells between DARK and LIGHT.
+     *
+     * @param width width of the board.
+     * @param height height of the board.
+     * @param numberOfBoard number of boards.
+     * @param initialColor color of the cell first cell of the chessboard (of coordinates 1,1,1).
+     */
     public DefaultBoard(int width, int height, int numberOfBoard, Colors initialColor) {
         checkParams(width, height, numberOfBoard);
         this.width = width;
@@ -16,17 +24,29 @@ public class DefaultBoard implements Board {
         this.board = createBoardCells(initialColor);
     }
 
+    /**
+     * DefaultBoard constructor that creates the board with all the cells of the same color (BASECOLOR).
+     *
+     * @param width width of the board.
+     * @param height height of the board.
+     * @param numberOfBoard number of boards.
+     */
     public DefaultBoard(int width, int height, int numberOfBoard) {
         checkParams(width, height, numberOfBoard);
         this.width = width;
         this.height = height;
         this.numberOfBoard = numberOfBoard;
         this.board = createBoardCells(Colors.BASECOLOR);
-        for (Cell c: this.getBoard()) {
-            c.setColor(Colors.BASECOLOR);
-        }
     }
 
+    /**
+     * This method checks if the parameters passed are less than the required amount, and if they are it throws an
+     * IllegalArgumentException.
+     *
+     * @param width The width of the board.
+     * @param height The height of the board.
+     * @param nBoard The number of boards to be generated.
+     */
     private void checkParams(int width, int height, int nBoard){
         if(width <= 0 || height <= 0 || nBoard < 1){
             throw new IllegalArgumentException("The parameters passed are less than the required amount.");
@@ -34,17 +54,19 @@ public class DefaultBoard implements Board {
     }
 
     /**
-     * It creates a board of cells with the given color and returns it.
+     * Given the color of the first cell, it creates a board of cells
+     * (changing the color for every cell if the first color is LIGHT or DARK and keeping the same
+     * one if the color passed is BASECOLOR) and returns it.
      *
-     * @param color the color of the first cell of the board
-     * @return An ArrayList of Cells.
+     * @param color the color of the first cell of the board.
+     * @return An ArrayList of cells.
      */
     private ArrayList<Cell> createBoardCells(Colors color){
         ArrayList<Cell> board = new ArrayList<>();
         for(int n=1; n<=this.getnumberOfBoard(); n++){
             for(int i=1; i<=this.getWidth(); i++){
                 for(int j=1; j<=this.getHeight(); j++){
-                    Coordinate coordinate = new Coordinate(Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n));
+                    Coordinate coordinate = new Coordinate(i, j, n);
                     Cell cell = new Cell(coordinate, color, Optional.empty());
                     color = color.changeColor();
                     board.add(cell);
@@ -88,7 +110,7 @@ public class DefaultBoard implements Board {
     public ArrayList<Cell> getCellsWithPiecesOfOneColor(Colors pieceColor) {
         ArrayList<Cell> colorPieceList = new ArrayList<>();
         for(Cell cell : this.getBoard()){
-            if(cell.getPieceOptional().isPresent()){
+            if(cell.hasPiece()){
                 if(cell.getPieceOptional().get().getColor().equals(pieceColor)){
                     colorPieceList.add(cell);
                 }
@@ -97,10 +119,11 @@ public class DefaultBoard implements Board {
         return colorPieceList;
     }
 
+
     @Override
     public boolean removeAllPieces() {
         for (Cell cell : this.getBoard()){
-            if(cell.getPieceOptional().isPresent()){
+            if(cell.hasPiece()){
                 cell.setPieceOptional(Optional.empty());
             }
         }
@@ -119,9 +142,14 @@ public class DefaultBoard implements Board {
         return cells;
     }
 
+    /**
+     * If any cell in the board has a piece, return false, otherwise return true.
+     *
+     * @return true if the board is empty, false otherwise.
+     */
     private boolean checkIfBoardIsEmpty(){
         for (Cell cell : this.getBoard()){
-            if(cell.getPieceOptional().isPresent()){
+            if(cell.hasPiece()){
                 return false;
             }
         }
@@ -137,6 +165,7 @@ public class DefaultBoard implements Board {
         }
     }
 
+    @Override
     public ArrayList<Optional<Cell>> getCellNeighbours(Coordinate coordinate){
         DefaultAction<DefaultBoard> action = new DefaultAction<>();
         ArrayList<Optional<Cell>> neighboursCell = new ArrayList<>();
@@ -151,34 +180,66 @@ public class DefaultBoard implements Board {
         return neighboursCell;
     }
 
+    /**
+     * This method returns the board.
+     *
+     * @return the ArrayList of cells that represents the board.
+     */
     public ArrayList<Cell> getBoard() {
         return board;
     }
 
+    /**
+     * This method sets the board.
+     */
     public void setBoard(ArrayList<Cell> board) {
         this.board = board;
     }
 
+    /**
+     * This method returns the width of the board.
+     *
+     * @return the width of the board.
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * This method sets the width of the board.
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     * This method returns the height of the board.
+     *
+     * @return the height of the board.
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * This method sets the height of the board.
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     * This method returns the number of boards.
+     *
+     * @return the number of boards.
+     */
     public int getnumberOfBoard() {
         return numberOfBoard;
     }
 
+    /**
+     * This method sets the number of boards.
+     */
     public void setNumberOfBoard(int numberOfBoard) {
         this.numberOfBoard = numberOfBoard;
     }

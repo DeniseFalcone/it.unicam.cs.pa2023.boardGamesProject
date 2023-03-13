@@ -15,6 +15,7 @@ public class DefaultCoordinateMapper implements CoordinateMapper{
         this.map = map;
     }
 
+    @Override
     public Integer getValueFromMap(Character key){
         if(!map.containsKey(key)){
             throw new IllegalArgumentException("This key doesn't exist.");
@@ -22,6 +23,7 @@ public class DefaultCoordinateMapper implements CoordinateMapper{
         return map.get(key);
     }
 
+    @Override
     public Character getKeyFromMap(Integer value){
         Optional<Character> key = map.entrySet().stream()
                 .filter(x -> value.equals(x.getValue()))
@@ -33,6 +35,7 @@ public class DefaultCoordinateMapper implements CoordinateMapper{
         return key.get();
     }
 
+    @Override
     public Integer[] mapCoordinate(String[] inputCoordinate){
         Integer[] coordinateArray = new Integer[3];
         if(inputCoordinate.length == 2){
@@ -49,6 +52,13 @@ public class DefaultCoordinateMapper implements CoordinateMapper{
         return coordinateArray;
     }
 
+
+    /**
+     * Given a string, if it's a number returns true, false otherwise.
+     *
+     * @param string The string to be tested.
+     * @return true if the string is a number, false otherwise.
+     */
     private boolean isNumeric(String string) {
         try {
             double d = Double.parseDouble(string);

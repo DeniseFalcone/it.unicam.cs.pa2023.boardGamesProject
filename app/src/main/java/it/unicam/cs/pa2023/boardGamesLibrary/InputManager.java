@@ -17,6 +17,11 @@ public class InputManager {
         return inputOutputManager;
     }
 
+    /**
+     * This method takes a string from the user and returns it.
+     *
+     * @return the string inserted by the user.
+     */
     public String inputString(){
         String input;
         this.scanner = new Scanner(System.in);
@@ -25,10 +30,20 @@ public class InputManager {
     }
 
 
+    /**
+     * This method is used to close the scanner.
+     */
     public void closeScanner() {
         this.scanner.close();
     }
 
+    /**
+     * Given a string, this method checks if the input is not null and matches the pattern
+     * of a letter or number, followed by a comma, followed by a number.
+     *
+     * @param string The string to be checked.
+     * @return true if the string matches the pattern and false otherwise.
+     */
     public boolean checkCoordinateInput(String string){
         return string != null && Pattern.matches("[a-zA-Z0-9,]+,[0-9]+", string);
     }

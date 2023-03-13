@@ -33,7 +33,6 @@ public interface Board{
     ArrayList<Cell> getCellsWithPiecesOfOneColor(Colors pieceColor);
 
 
-
     /**
      * Removes all pieces from the board.
      *
@@ -49,6 +48,7 @@ public interface Board{
      * @return An ArrayList of all the cells in that direction.
      */
     ArrayList<Cell> getCellsFromDirection(Coordinate coordinate, Integer[] direction);
+
 
     /**
      * Given a coordinate, return an array of all its neighbouring cells.

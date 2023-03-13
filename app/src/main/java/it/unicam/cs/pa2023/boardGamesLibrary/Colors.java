@@ -6,9 +6,9 @@ public enum Colors {
 
 
     /**
-     * If the current color is DARK, return LIGHT, otherwise return DARK.
+     * If the current color is DARK, return LIGHT, if it's LIGHT then return DARK and if it's BASECOLOR return BASECOLOR.
      *
-     * @return A Colors object
+     * @return the switched color.
      */
     public Colors changeColor(){
         return switch (this){

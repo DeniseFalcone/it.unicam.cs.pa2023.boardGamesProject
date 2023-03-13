@@ -1,20 +1,16 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
-import org.w3c.dom.stylesheets.LinkStyle;
-
-import java.util.List;
-
 public interface Rule<B extends Board> {
 
 
+
     /**
-     * "Given a piece and a board state, return true if the piece can be placed on the board, and false otherwise."
+     * Given a piece, a board, and a coordinate, return true if the rule is successfully applied and false otherwise.
      *
-     * The function is called "applyRule" because it applies the rule of the game to the piece and the board state
-     *
-     * @param piece The piece that is being placed on the board.
-     * @param board A list of all the cells on the board.
-     * @return A boolean value.
+     * @param piece The piece that is being moved.
+     * @param board The board that the piece is being placed on.
+     * @param coordinate The coordinate that the piece is trying to move to.
+     * @return true if the pieces is successfully placed at the given coordinate and false otherwise.
      */
     boolean applyRule(Piece piece, B board, Coordinate coordinate);
 

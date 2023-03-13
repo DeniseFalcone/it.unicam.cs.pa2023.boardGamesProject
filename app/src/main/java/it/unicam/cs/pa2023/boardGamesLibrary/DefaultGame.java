@@ -16,6 +16,9 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
     private ArrayList<GameState<B,T>> gameStateHistory;
     private D defaultCoordinateMapper;
 
+    /**
+     * DefaultGame constructor creates a default game with all values set to null or "".
+     */
     public DefaultGame(){
         this.gameRules = new ArrayList<>();
         this.players = new ArrayList<>();
@@ -33,13 +36,6 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
     public abstract void playGame();
 
     @Override
-    public void getStatistics(){
-        for(T player : this.getPlayers()){
-            System.out.println(player.toString());
-        }
-    }
-
-    @Override
     public boolean addPlayer(T player) {
         return this.getPlayers().add(player);
     }
@@ -52,12 +48,6 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
     @Override
     public boolean addRule(K rule) {
         return this.getGameRules().add(rule);
-    }
-
-    //TODO
-    @Override
-    public boolean changeRule(K rule){
-        return false;
     }
 
     @Override
@@ -78,42 +68,82 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
     @Override
     public abstract void updatePlayersScore();
 
+    /**
+     * This method returns the game rules.
+     *
+     * @return ArrayList of the game rules.
+     */
     public ArrayList<K> getGameRules() {
         return gameRules;
     }
 
+    /**
+     * This method sets the game rules.
+     */
     public void setGameRules(ArrayList<K> gameRules) {
         this.gameRules = gameRules;
     }
 
+    /**
+     * This method returns the players.
+     *
+     * @return ArrayList of the players.
+     */
     public ArrayList<T> getPlayers() {
         return players;
     }
 
+    /**
+     * This method sets the players.
+     */
     public void setPlayers(ArrayList<T> players) {
         this.players = players;
     }
 
+    /**
+     * This method returns the game name.
+     *
+     * @return the name of the game.
+     */
     public String getGameName() {
         return gameName;
     }
 
+    /**
+     * This method sets the game name.
+     */
     public void setGameName(String gameName) {
         this.gameName = gameName;
     }
 
+    /**
+     * This method returns the game board.
+     *
+     * @return the game board.
+     */
     public B getGameBoard() {
         return gameBoard;
     }
 
+    /**
+     * This method sets the game board.
+     */
     public void setGameBoard(B gameBoard) {
         this.gameBoard = gameBoard;
     }
 
+    /**
+     * This method returns the actual turn.
+     *
+     * @return turn.
+     */
     public int getTurn() {
         return turn;
     }
 
+    /**
+     * This method sets the game turn.
+     */
     public void setTurn(int turn) {
         this.turn = turn;
     }

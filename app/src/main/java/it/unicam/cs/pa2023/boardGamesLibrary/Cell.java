@@ -15,22 +15,47 @@ public class Cell {
         this.pieceOptional = pieceOptional;
     }
 
-    public boolean isFree(){
-        return pieceOptional.isEmpty();
+    /**
+     * This method returns true if the cell has a piece and false otherwise.
+     *
+     * @return true if the cell contains a piece and false otherwise.
+     */
+    public boolean hasPiece(){
+        return pieceOptional.isPresent();
     }
 
+    /**
+     * This method returns the coordinate of the cell.
+     *
+     * @return The coordinate of the cell.
+     */
     public Coordinate getCoordinate() {
-        return coordinate;
+        return this.coordinate;
     }
 
+    /**
+     * This method returns the color of the cell.
+     *
+     * @return The color of the cell.
+     */
     public Colors getColor() {
-        return color;
+        return this.color;
     }
 
+    /**
+     * This method returns Optional.Empty if the cell is empty and Optional.of(Piece) if the cell has a piece.
+     *
+     * @return Optional.Empty if the cell is empty and Optional.of(Piece) if the cell has a piece.
+     */
     public Optional<Piece> getPieceOptional() {
-        return pieceOptional;
+        return this.pieceOptional;
     }
 
+    /**
+     * If this.pieceOptional is not null, then set it to the pieceOptional passed in.
+     *
+     * @param pieceOptional This is the optional piece that is being set.
+     */
     public void setPieceOptional(Optional<Piece> pieceOptional) {
         this.pieceOptional = pieceOptional;
     }
@@ -48,6 +73,11 @@ public class Cell {
         return Objects.hash(getCoordinate(), getColor(), getPieceOptional());
     }
 
+    /**
+     * This method sets the color of the cell to the color passed in.
+     *
+     * @param color The color of the cell.
+     */
     public void setColor(Colors color) {
         this.color = color;
     }

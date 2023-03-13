@@ -32,7 +32,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
             }
         }
         this.setTurn(this.getTurn() + 1);
-        this.getGameStateHistory().add(gameState);
+        this.addGameState(gameState);
         updatePlayersScore();
         OthelloOutputManager.getInstance().printScore(this.getPlayers());
         return true;
@@ -104,10 +104,10 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     private void setupBoard() {
         this.setGameBoard(new OthelloBoard(8,8,1));
         Coordinate[] coordinates = {
-                new Coordinate(4, 4, 1),
-                new Coordinate(5, 5, 1),
-                new Coordinate(5, 4, 1),
-                new Coordinate(4, 5, 1)
+                new Coordinate(4, 4),
+                new Coordinate(5, 5),
+                new Coordinate(5, 4),
+                new Coordinate(4, 5)
         };
         Colors[] colors = {Colors.LIGHT, Colors.LIGHT, Colors.DARK, Colors.DARK};
         for (int i = 0; i < coordinates.length; i++) {
@@ -137,7 +137,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     public void updatePlayersScore() {
         for(OthelloPlayer player : this.getPlayers()){
             int score = 0;
-            for (Cell cell : this.getGameBoard().getCellsWithPiecesOfOneColor(player.getColor())) {
+            for (Cell ignored : this.getGameBoard().getCellsWithPiecesOfOneColor(player.getColor())) {
                 score += 1;
             }
             player.setScore(score);
@@ -165,7 +165,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         OthelloBoard othelloBoard = new OthelloBoard(8,8,1);
         for(Cell cell: boardToCopy.getBoard()){
             Optional<Piece> optionalPiece;
-            if(cell.getPieceOptional().isPresent()){
+            if(cell.hasPiece()){
                 Piece piece = new Piece(cell.getPieceOptional().get().getColor(), cell.getPieceOptional().get().getValue(), cell.getPieceOptional().get().getName());
                 optionalPiece = Optional.of(piece);
             }else{

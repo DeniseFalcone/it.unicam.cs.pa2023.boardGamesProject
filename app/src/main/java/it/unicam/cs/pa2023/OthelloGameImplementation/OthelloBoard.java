@@ -30,7 +30,7 @@ public class OthelloBoard extends DefaultBoard {
     public ArrayList<Cell> checkCellsColorOneDirection(ArrayList<Cell> cells, Colors color){
         ArrayList<Cell> temp = new ArrayList<>();
         for(Cell cell: cells){
-            if(cell.getPieceOptional().isPresent()){
+            if(cell.hasPiece()){
                 if(cell.getPieceOptional().get().getColor() != color){
                     temp.add(cell);
                 }else{

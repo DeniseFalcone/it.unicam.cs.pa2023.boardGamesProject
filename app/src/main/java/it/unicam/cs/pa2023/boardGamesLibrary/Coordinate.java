@@ -11,38 +11,76 @@ public class Coordinate {
     private Integer y;
     private Integer z;
 
-
+    /**
+     * Coordinate constructor that only takes the x and y values. The z is set by default at 1.
+     *
+     * @param x the x-axis value.
+     * @param y the y-axis value.
+     */
     public Coordinate(Integer x, Integer y) {
         this.x = x;
         this.y = y;
         this.z = 1;
     }
+
+    /**
+     * Coordinate constructor that takes the x y and z values.
+     *
+     * @param x the x-axis value.
+     * @param y the y-axis value.
+     * @param z the z-axis value.
+     */
     public Coordinate(Integer x, Integer y, Integer z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
+    /**
+     * This method returns the value of the x variable.
+     *
+     * @return The value of the x variable.
+     */
     public Integer getX() {
         return x;
     }
 
+    /**
+     * This method sets the value of the x variable.
+     */
     public void setX(Integer x) {
         this.x = x;
     }
 
+    /**
+     * This method returns the value of the y variable.
+     *
+     * @return The value of the y variable.
+     */
     public Integer getY() {
         return y;
     }
 
+
+    /**
+     * This method sets the value of the y variable.
+     */
     public void setY(Integer y) {
         this.y = y;
     }
 
+    /**
+     * This method returns the value of the z variable.
+     *
+     * @return The value of the z variable.
+     */
     public Integer getZ() {
         return z;
     }
 
+    /**
+     * This method sets the value of the z variable.
+     */
     public void setZ(Integer z) {
         this.z = z;
     }

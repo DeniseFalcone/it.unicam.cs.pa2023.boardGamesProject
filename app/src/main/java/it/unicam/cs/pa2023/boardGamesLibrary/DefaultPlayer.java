@@ -10,6 +10,13 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
     private Colors color;
     private D mapper;
 
+    /**
+     * DefaultPlayer constructor that creates a player.
+     * @param name name of the player.
+     * @param color color of the player.
+     * @param score score of the player.
+     * @param mapper mapper for the coordinates.
+     */
     public DefaultPlayer(String name, Colors color, int score, D mapper) {
         this.name = name;
         this.color = color;
@@ -30,34 +37,54 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
         }
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * This method sets the name of the player.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public Colors getColor() {
         return color;
     }
 
+    /**
+     * This method sets the color of the player.
+     */
     public void setColor(Colors color) {
         this.color = color;
     }
 
+    @Override
     public int getScore() {
         return score;
     }
 
+    /**
+     * This method returns the coordinate mapper used by the player.
+     *
+     * @return the coordinate mapper.
+     */
     public D getMapper() {
         return mapper;
     }
 
+    /**
+     * This method sets the mapper.
+     */
     public void setMapper(D mapper) {
         this.mapper = mapper;
     }
 
+    /**
+     * This method sets the score of the player.
+     */
     public void setScore(int score) {
         this.score = score;
     }
