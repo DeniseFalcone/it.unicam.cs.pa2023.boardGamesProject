@@ -33,21 +33,21 @@ public class DefaultPlayerTest {
 
     @Test
     public void insertCoordinateTest(){
-        DefaultPlayer player = new DefaultPlayer("Denise", Colors.DARK,0, coordinateMapper);
+        DefaultPlayer<DefaultCoordinateMapper> player = new DefaultPlayer<>("Denise", Colors.DARK,0, coordinateMapper);
         String userInput1 = "c,6,3";
         ByteArrayInputStream input1 = new ByteArrayInputStream(userInput1.getBytes());
         System.setIn(input1);
-        Coordinate coordinate1 = new Coordinate(Integer.valueOf(3),Integer.valueOf(6), Integer.valueOf(3));
+        Coordinate coordinate1 = new Coordinate(3, 6, 3);
         assertEquals(coordinate1,player.insertCoordinate());
         String userInput2 = "c,6";
         ByteArrayInputStream input2 = new ByteArrayInputStream(userInput2.getBytes());
         System.setIn(input2);
-        Coordinate coordinate2 = new Coordinate(Integer.valueOf(3),Integer.valueOf(6), Integer.valueOf(1));
+        Coordinate coordinate2 = new Coordinate(3, 6, 1);
         assertEquals(coordinate2,player.insertCoordinate());
         String userInput3 = "4,6,8";
         ByteArrayInputStream input3 = new ByteArrayInputStream(userInput3.getBytes());
         System.setIn(input3);
-        Coordinate coordinate3 = new Coordinate(Integer.valueOf(4),Integer.valueOf(6), Integer.valueOf(8));
+        Coordinate coordinate3 = new Coordinate(4, 6, 8);
         assertEquals(coordinate3,player.insertCoordinate());
     }
 }

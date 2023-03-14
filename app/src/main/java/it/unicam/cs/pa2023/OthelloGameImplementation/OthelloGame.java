@@ -139,7 +139,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     private ArrayList<Piece> createPieces(){
         ArrayList<Piece> playerPieces = new ArrayList<>();
         for(int i=0; i<64;i++){
-            Piece piece = new Piece(Colors.DARK, Integer.valueOf(1), "piece");
+            Piece piece = new Piece(Colors.DARK, 1, "piece");
             playerPieces.add(piece);
         }
         return  playerPieces;

@@ -18,7 +18,7 @@ public class OthelloGameTest {
     private OthelloGame othelloGame;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         this.othelloGame = new OthelloGame();
     }
 
@@ -26,8 +26,8 @@ public class OthelloGameTest {
     public void playerCanPlayTurnTest() {
         assertTrue(othelloGame.playerCanPlayTurn(othelloGame.getPlayers().get(0)));
         assertTrue(othelloGame.playerCanPlayTurn(othelloGame.getPlayers().get(1)));
-        Coordinate coordinate1 = new Coordinate(Integer.valueOf(5), Integer.valueOf(4), 1);
-        Coordinate coordinate2 = new Coordinate(Integer.valueOf(4), Integer.valueOf(5), 1);
+        Coordinate coordinate1 = new Coordinate(5, 4, 1);
+        Coordinate coordinate2 = new Coordinate(4, 5, 1);
         othelloGame.getGameBoard().getCellFromCoordinate(coordinate1).get().getPieceOptional().get().setColor(Colors.LIGHT);
         othelloGame.getGameBoard().getCellFromCoordinate(coordinate2).get().getPieceOptional().get().setColor(Colors.LIGHT);
         assertFalse(othelloGame.playerCanPlayTurn(othelloGame.getPlayers().get(1)));

@@ -25,7 +25,7 @@ public class OthelloBoard extends DefaultBoard {
         Integer[] direction = new Integer[3];
         direction[0] = neighbourCoordinate.getX() - actualCoordinate.getX();
         direction[1] = neighbourCoordinate.getY() - actualCoordinate.getY();
-        direction[2] = Integer.valueOf(0);
+        direction[2] = 0;
         return direction;
     }
 

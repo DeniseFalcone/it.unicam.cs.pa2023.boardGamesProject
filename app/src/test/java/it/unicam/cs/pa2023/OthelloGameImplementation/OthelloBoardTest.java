@@ -27,13 +27,7 @@ public class OthelloBoardTest {
     }
 
     @Test
-    public void checkCellsColorOneDirectionTest() {
-        ArrayList<Cell> cells = new ArrayList<Cell>();
-
-    }
-
-    @Test
-    public void testCheckCellsColorOneDirection() {
+    public void CheckCellsColorOneDirectionTest() {
         OthelloBoard board = new OthelloBoard(8,8,1);
         Piece blackPiece = new Piece(Colors.DARK,1,"piece");
         Piece whitePiece = new Piece(Colors.LIGHT, 1, "piece");

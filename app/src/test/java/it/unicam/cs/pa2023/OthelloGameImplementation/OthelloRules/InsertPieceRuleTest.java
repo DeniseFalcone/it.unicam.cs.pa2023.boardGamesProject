@@ -18,18 +18,18 @@ public class InsertPieceRuleTest {
     private OthelloGame othelloGame;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         this.othelloGame = new OthelloGame();
     }
 
     @Test
     public void applyRuleTest(){
-        Piece piece = new Piece(Colors.LIGHT, Integer.valueOf(1), "piece");
-        Coordinate coordinate1 = new Coordinate(Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(1));
+        Piece piece = new Piece(Colors.LIGHT, 1, "piece");
+        Coordinate coordinate1 = new Coordinate(3, 4, 1);
         assertTrue(othelloGame.getGameRules().get(1).applyRule(piece, othelloGame.getGameBoard(), coordinate1));
-        Coordinate coordinate2 = new Coordinate(Integer.valueOf(4), Integer.valueOf(4), Integer.valueOf(1));
+        Coordinate coordinate2 = new Coordinate(4, 4, 1);
         assertFalse(othelloGame.getGameRules().get(1).applyRule(piece, othelloGame.getGameBoard(), coordinate2));
-        Coordinate coordinate3 = new Coordinate(Integer.valueOf(45), Integer.valueOf(8), Integer.valueOf(1));
+        Coordinate coordinate3 = new Coordinate(45, 8, 1);
         assertFalse(othelloGame.getGameRules().get(1).applyRule(piece, othelloGame.getGameBoard(), coordinate3));
     }
 }
