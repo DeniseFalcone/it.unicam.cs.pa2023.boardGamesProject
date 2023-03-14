@@ -7,7 +7,6 @@ import java.util.Optional;
  * -----------------------------------------------------
  * @param <B> A class that extends the Board interface.
  */
-@FunctionalInterface
 public interface Action<B extends Board> {
 
 
@@ -36,12 +35,7 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the same x and z coordinates as the coordinate passed as a parameter, but with
      * a y coordinate that is n_steps higher or lower.
      */
-    default Coordinate verticalMovement(Coordinate coordinate, int n_steps){
-        if(n_steps == 0){
-            throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
-        }
-        return new Coordinate(coordinate.getX(), coordinate.getY() + n_steps, coordinate.getZ());
-    }
+    Coordinate verticalMovement(Coordinate coordinate, int n_steps);
 
     /**
      * Given a coordinate, return a new coordinate that is the same as the original one, but with the x-value
@@ -52,12 +46,7 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the same y and z coordinates as the coordinate passed as a parameter, but with
      * a x coordinate that is n_steps higher or lower.
      */
-    default Coordinate horizontalMovement(Coordinate coordinate, int n_steps){
-        if(n_steps == 0){
-            throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
-        }
-        return new Coordinate(coordinate.getX() + n_steps, coordinate.getY(), coordinate.getZ());
-    }
+    Coordinate horizontalMovement(Coordinate coordinate, int n_steps);
 
     /**
      * Given a coordinate, return a new coordinate that is the same as the original one, but with the x and y values
@@ -69,12 +58,7 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the same z coordinate as the coordinate passed as a parameter, but with
      * the x and y coordinates respectively x_steps and y_steps higher or lower.
      */
-    default Coordinate diagonalMovement(Coordinate coordinate, int x_steps, int y_steps){
-        if(y_steps == 0 || x_steps == 0){
-            throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
-        }
-        return new Coordinate(coordinate.getX() + x_steps, coordinate.getY() + y_steps, coordinate.getZ());
-    }
+    Coordinate diagonalMovement(Coordinate coordinate, int x_steps, int y_steps);
 
     /**
      * Given a coordinate and a board number, returns a new coordinate with the same x and y values but with the new
@@ -84,12 +68,7 @@ public interface Action<B extends Board> {
      * @param n_board the number of the board you want to change to.
      * @return A new coordinate with the same x and y values but with the new board number.
      */
-    default Coordinate changeBoard(Coordinate coordinate, int n_board){
-        if(n_board <= 0 || n_board == coordinate.getZ() ){
-            throw new IllegalArgumentException("The board number passed is not valid. Insert a valid number.");
-        }
-        return new Coordinate(coordinate.getX(), coordinate.getY(), n_board);
-    }
+    Coordinate changeBoard(Coordinate coordinate, int n_board);
 
     /**
      * Given a coordinate, and the x, y and z values passed as direction, returns a new coordinate with the corresponding
@@ -102,8 +81,6 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the x, y, and z values of the original Coordinate object plus the x, y, and z
      * values of the direction passed in.
      */
-    default Coordinate getCoordinateFromDirection(Coordinate coordinate, int x, int y, int z){
-        return new Coordinate(coordinate.getX() + x, coordinate.getY() + y, coordinate.getZ() + z);
-    }
+    Coordinate getCoordinateFromDirection(Coordinate coordinate, int x, int y, int z);
 
 }

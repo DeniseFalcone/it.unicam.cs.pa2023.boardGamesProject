@@ -1,5 +1,6 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
+@FunctionalInterface
 public interface Rule<B extends Board> {
 
 

@@ -9,11 +9,16 @@ import java.util.Optional;
 
 public class InsertPieceRule extends OthelloRule {
 
+
+    public InsertPieceRule() {
+        super();
+    }
+
     @Override
     public boolean applyRule(Piece piece, OthelloBoard board, Coordinate coordinate) {
         if(board.getCellFromCoordinate(coordinate).isPresent()){
             if(board.getCellFromCoordinate(coordinate).get().getPieceOptional().isEmpty()){
-                board.getCellFromCoordinate(coordinate).get().setPieceOptional(Optional.of(piece));
+                this.getAction().doAction(Optional.empty(),Optional.of(coordinate),board,piece);
                 return true;
             }
         }

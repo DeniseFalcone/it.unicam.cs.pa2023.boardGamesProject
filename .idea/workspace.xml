@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3671e56-e5c4-4b4f-ac87-f28a73797a66" name="Changes" comment="Started commenting the Othello implementation.">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultCoordinateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultCoordinateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloBoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloGameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRuleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRuleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultActionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultBoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultPlayerTest.java" afterDir="false" />
+    <list default="true" id="c3671e56-e5c4-4b4f-ac87-f28a73797a66" name="Changes" comment="Fixed some unnecessary boxing.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/DefaultAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/boardGamesLibrary/Rule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +100,7 @@
       <recent name="it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.InsertPieceRuleTest">
+  <component name="RunManager" selected="Gradle.OthelloGameTest">
     <configuration name="ChangeColorRuleTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -128,7 +124,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DefaultActionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DefaultPlayerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -141,53 +137,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;it.unicam.cs.pa2023.boardGamesLibrary.DefaultActionTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="DefaultBoardTest.getCellFromCoordinateTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;it.unicam.cs.pa2023.boardGamesLibrary.DefaultBoardTest.getCellFromCoordinateTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="DefaultCoordinateMapperTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;it.unicam.cs.pa2023.boardGamesLibrary.DefaultCoordinateMapperTest&quot;" />
+            <option value="&quot;it.unicam.cs.pa2023.boardGamesLibrary.DefaultPlayerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -211,6 +161,52 @@
             <option value=":app:test" />
             <option value="--tests" />
             <option value="&quot;it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.InsertPieceRuleTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="OthelloBoardTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;it.unicam.cs.pa2023.OthelloGameImplementation.OthelloBoardTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="OthelloGameTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;it.unicam.cs.pa2023.OthelloGameImplementation.OthelloGameTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -251,11 +247,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.OthelloGameTest" />
+        <item itemvalue="Gradle.OthelloBoardTest" />
         <item itemvalue="Gradle.InsertPieceRuleTest" />
         <item itemvalue="Gradle.ChangeColorRuleTest" />
-        <item itemvalue="Gradle.DefaultActionTest" />
-        <item itemvalue="Gradle.DefaultBoardTest.getCellFromCoordinateTest" />
-        <item itemvalue="Gradle.DefaultCoordinateMapperTest" />
+        <item itemvalue="Gradle.DefaultPlayerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -345,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678782411703</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed some unnecessary boxing.">
+      <created>1678783445006</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1678783445006</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -372,7 +375,8 @@
     <MESSAGE value="Finished Othello implementation. &#10;Fixed error at the end of the game (finished with non zero value (1))." />
     <MESSAGE value="Finished commenting the library and adjusted some methods." />
     <MESSAGE value="Started commenting the Othello implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started commenting the Othello implementation." />
+    <MESSAGE value="Fixed some unnecessary boxing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some unnecessary boxing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -401,26 +405,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/ChangeColorRule.java</url>
           <line>17</line>
           <option name="timeStamp" value="179" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="180" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="181" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/it/unicam/cs/pa2023/OthelloGameImplementation/OthelloRules/InsertPieceRule.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="183" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
