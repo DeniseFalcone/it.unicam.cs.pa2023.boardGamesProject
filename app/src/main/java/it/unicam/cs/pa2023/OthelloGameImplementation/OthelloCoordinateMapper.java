@@ -5,6 +5,12 @@ import it.unicam.cs.pa2023.boardGamesLibrary.DefaultCoordinateMapper;
 import java.util.Map;
 
 public class OthelloCoordinateMapper extends DefaultCoordinateMapper {
+
+    /**
+     * OthelloCoordinateMapper constructor that creates a mapper for the Othello game.
+     * This mapper takes an empty map and creates the mapper for the Othello game.
+     * @param map an empty map that maps Character and Integer.
+     */
     public OthelloCoordinateMapper(Map<Character, Integer> map) {
         super(map);
         map.putIfAbsent('a',1);

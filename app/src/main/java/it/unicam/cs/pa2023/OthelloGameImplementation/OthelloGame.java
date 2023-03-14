@@ -3,7 +3,6 @@ package it.unicam.cs.pa2023.OthelloGameImplementation;
 import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.ChangeColorRule;
 import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.InsertPieceRule;
 import it.unicam.cs.pa2023.boardGamesLibrary.*;
-
 import java.util.*;
 
 public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, OthelloBoard, OthelloCoordinateMapper> {
@@ -13,9 +12,15 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         this.setDefaultCoordinateMapper(new OthelloCoordinateMapper(new HashMap<>()));
         this.setGameName("Othello");
         this.setupGame();
-
     }
 
+    /**
+     * Given a player, prints the board, prints the turn player, gets a valid coordinate from the player,
+     * applies the rules to the coordinate, updates the turn and the players' score, and returns true
+     *
+     * @param player The player who's turn it is.
+     * @return A boolean value.
+     */
     protected boolean playTurn(OthelloPlayer player){
         GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.cloneOthelloBoard(this.getGameBoard()), player, this.getTurn());
         OthelloOutputManager.getInstance().printBoard(this.getGameBoard(),this.getDefaultCoordinateMapper());
@@ -39,9 +44,11 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     }
 
     /**
-     * The game is played until one player can't play a turn, then the other player is checked to see if they can play a
-     * turn. If they can't, the game is over.
+     * This method makes the players play Othello. The game is played until one of the players
+     * can't play a turn, then the other player is checked to see if they can play.
+     * If they can't, the game is over, otherwise they continue until they both can't play.
      */
+    @Override
     public void playGame(){
         OthelloPlayer player = this.getPlayers().get(0);
         boolean gameEnded = false;
@@ -63,6 +70,13 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         InputManager.getInstance().closeScanner();
     }
 
+
+    /**
+     * Get a coordinate from the player, and keep asking until the coordinate is valid.
+     *
+     * @param player the player whose turn it is.
+     * @return a valid coordinate.
+     */
     private Coordinate getValidCoordinate(OthelloPlayer player){
         Coordinate coordinate;
         do{

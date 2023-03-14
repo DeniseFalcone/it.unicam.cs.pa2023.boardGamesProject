@@ -8,10 +8,19 @@ import it.unicam.cs.pa2023.boardGamesLibrary.DefaultBoard;
 import java.util.ArrayList;
 
 public class OthelloBoard extends DefaultBoard {
+
     public OthelloBoard(int width, int height, int numberOfBoard) {
         super(width, height, numberOfBoard);
     }
 
+    /**
+     * Given the coordinate of the current cell and the neighbouring cell, returns an array of integers
+     * that represents the direction of the neighbour coordinate from the actual coordinate.
+     *
+     * @param actualCoordinate The coordinate of the current cell.
+     * @param neighbourCoordinate The coordinate of the neighbouring cell.
+     * @return The direction of the neighbour from the actual coordinate.
+     */
     public Integer[] getDirection(Coordinate actualCoordinate, Coordinate neighbourCoordinate){
         Integer[] direction = new Integer[3];
         direction[0] = neighbourCoordinate.getX() - actualCoordinate.getX();
@@ -21,11 +30,12 @@ public class OthelloBoard extends DefaultBoard {
     }
 
     /**
-     * It takes an array of cells and a color, and returns an array of cells that are the same color as the input color
+     * Given an array of cells and a color, and returns an array of cells that have a
+     * piece of the same color as the input color.
      *
-     * @param cells The cells that are being checked for the color.
-     * @param color The color of the piece that is being moved.
-     * @return The method is returning an ArrayList of Cells.
+     * @param cells The cells that are being checked.
+     * @param color color of the pieces of which we want the cells.
+     * @return ArrayList of cells with pieces of the same color as the color given in input.
      */
     public ArrayList<Cell> checkCellsColorOneDirection(ArrayList<Cell> cells, Colors color){
         ArrayList<Cell> temp = new ArrayList<>();

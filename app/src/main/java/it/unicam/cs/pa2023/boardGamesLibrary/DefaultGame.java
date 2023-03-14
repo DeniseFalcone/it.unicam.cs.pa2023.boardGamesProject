@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K, B> {
-
-    private Scanner scanner = new Scanner(System.in);
+public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultRule<B>, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K, B> {
     private ArrayList<K> gameRules;
     private ArrayList<Piece> gamePieces;
     private ArrayList<T> players;
@@ -182,10 +180,18 @@ public abstract class DefaultGame<T extends DefaultPlayer, K extends DefaultRule
         return "Game" + gameName;
     }
 
+    /**
+     * This method returns the pieces used to play.
+     *
+     * @return ArrayList of pieces.
+     */
     public ArrayList<Piece> getGamePieces() {
         return gamePieces;
     }
 
+    /**
+     * This method sets the game pieces.
+     */
     public void setGamePieces(ArrayList<Piece> gamePieces) {
         this.gamePieces = gamePieces;
     }

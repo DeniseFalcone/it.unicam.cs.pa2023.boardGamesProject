@@ -21,12 +21,13 @@ public class OthelloOutputManager {
         return othelloOutputManager;
     }
 
-
-    public void printBoard(OthelloBoard board, OthelloCoordinateMapper mapper){
-        printGrid(board, mapper);
-    }
-
-    private void printGrid(OthelloBoard board, OthelloCoordinateMapper mapper) {
+    /**
+     * Given a board and its mapper, prints the board on the console.
+     *
+     * @param board the OthelloBoard to print.
+     * @param mapper this is the coordinate mapper that you created in the previous step.
+     */
+    public void printBoard(OthelloBoard board, OthelloCoordinateMapper mapper) {
         System.out.print("\n  " + IntStream.rangeClosed(1, board.getWidth())
                 .mapToObj(i -> "  " + mapper.getKeyFromMap(i) + " ")
                 .collect(Collectors.joining()));
@@ -44,22 +45,36 @@ public class OthelloOutputManager {
         }
     }
 
+    /**
+     * Given the players playing, prints the score of each one of them.
+     *
+     * @param players An ArrayList with all the players.
+     */
     public void printScore(ArrayList<OthelloPlayer> players){
         for (OthelloPlayer player : players) {
             System.out.println("Player " +player.getName()+ " score: " + player.getScore());
         }
     }
 
+    /**
+     * Given the next player, prints that it's his turn.
+     *
+     * @param player The player that needs to play.
+     */
     public void printTurnPlayer(OthelloPlayer player){
         System.out.println("Player " + player.getName() + " turn.");
     }
 
+    /**
+     * Given an ArrayList of all the players, prints the name of the player who won.
+     *
+     * @param players ArrayList of the players that played the game.
+     */
     public void printWinner(ArrayList<OthelloPlayer> players){
         OthelloPlayer winner = players.stream()
                 .max(Comparator.comparing(OthelloPlayer::getScore))
                 .orElseThrow(NoSuchElementException::new);
-        System.out.println("\nThe game is over!");
-        System.out.println("The winner is: " + winner.getName() + " with: " + winner.getScore() + " points.");
+        System.out.println("\nThe game is over! The winner is: " + winner.getName() + " with: " + winner.getScore() + " points.");
     }
 
 }

@@ -8,7 +8,6 @@ public class AppOthello {
     public static void main(String[] args) {
         OthelloGame othelloGame = new OthelloGame();
         othelloGame.playGame();
-
     }
 
 }

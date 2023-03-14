@@ -28,6 +28,13 @@ public class ChangeColorRule extends OthelloRule {
         return colorChanged;
     }
 
+    /**
+     * Given a list of cells and a color, it changes the color of all the pieces in the
+     * given list with the color passed.
+     *
+     * @param cells the cells with the pieces that are going to change color.
+     * @param color the color to be given to the pieces.
+     */
     private void changePieceColor(ArrayList<Cell> cells, Colors color){
         for (Cell cell: cells) {
             if(cell.getPieceOptional().isPresent()){

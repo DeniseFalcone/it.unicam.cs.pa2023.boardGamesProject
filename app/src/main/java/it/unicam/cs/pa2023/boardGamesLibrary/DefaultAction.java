@@ -10,9 +10,9 @@ public class DefaultAction<B extends DefaultBoard> implements Action<B>{
     public B doAction(Optional<Coordinate> oldCoordinate, Optional<Coordinate> newCoordinate, B board, Piece piece) {
         if(oldCoordinate.isEmpty() && newCoordinate.isPresent()){
             board.replacePieceInCell(newCoordinate.get(), Optional.of(piece));
-        }else if(newCoordinate.isEmpty() && oldCoordinate.isPresent()){
+        }else if(newCoordinate.isEmpty() && oldCoordinate.isPresent())
             board.replacePieceInCell(oldCoordinate.get(), Optional.empty());
-        }else if(oldCoordinate.isPresent()){
+        else if(oldCoordinate.isPresent()){
             board.replacePieceInCell(newCoordinate.get(), Optional.of(piece));
             board.replacePieceInCell(oldCoordinate.get(), Optional.empty());
         }else{
