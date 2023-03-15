@@ -1,7 +1,7 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
 /**
- * This class is used to create a game state object that saves the board of that turn and the next player.
+ * This class is used to create a game-state object that saves the board of that turn and the next player.
  * It has three attributes: board (the board-state to save), player (the player of the next turn) and turnNumber (the turn saved).
  *
  * @param <B> A class that extends the Board interface.

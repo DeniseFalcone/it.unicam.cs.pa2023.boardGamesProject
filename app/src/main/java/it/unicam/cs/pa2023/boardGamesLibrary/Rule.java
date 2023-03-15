@@ -1,7 +1,7 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
 /**
- * This interface can be used to create the rules to play the game.
+ * This interface can be used to create and apply the rules of a chessboard game.
  *
  * @param <B> A class that extends the Board interface.
  */

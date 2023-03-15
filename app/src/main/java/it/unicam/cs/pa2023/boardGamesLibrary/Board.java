@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 /**
- * This interface can be used to implement a chessboard, manage its state and get cells through different conditions.
+ * This interface can be used to implement a chessboard, get cells through different conditions and validate the action.
  */
 public interface Board{
 

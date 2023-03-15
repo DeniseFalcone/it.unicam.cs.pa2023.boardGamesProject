@@ -7,6 +7,7 @@ import java.util.Objects;
  * Default implementation of the Player interface.
  * It has four attributes: the name of the player, the color assigned to the player, the player score and
  * a mapper to map the coordinates the player inserts.
+ *
  * @param <D> A class that extends the DefaultCoordinateMapper.
  */
 public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
@@ -74,13 +75,13 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DefaultPlayer that = (DefaultPlayer) o;
-        return getScore() == that.getScore() && Objects.equals(getName(), that.getName()) && getColor() == that.getColor();
+        DefaultPlayer<?> that = (DefaultPlayer<?>) o;
+        return getScore() == that.getScore() && Objects.equals(getName(), that.getName()) && getColor() == that.getColor() && Objects.equals(getMapper(), that.getMapper());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getScore(), getName(), getColor());
+        return Objects.hash(getScore(), getName(), getColor(), getMapper());
     }
 
     @Override

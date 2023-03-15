@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * Default implementation of the Board interface.
  * It has 4 attributes: width, height and the numberOfBoard represent the dimension of the chessboard while board is
- * an array of cells used to describe the chessboard.
+ * an array of cells used to define the chessboard.
  */
 public class DefaultBoard implements Board {
 
