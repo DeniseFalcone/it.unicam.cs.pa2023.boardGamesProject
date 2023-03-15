@@ -1,6 +1,13 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
-public interface Game<T extends Player, K extends Rule, B extends Board> {
+/**
+ * This interface can be used to implement a game and manage it in all of its aspects.
+ *
+ * @param <T> A class that extends the Player interface.
+ * @param <K> A class that extends the Rule interface.
+ * @param <B> A class that extends the Board interface.
+ */
+public interface Game<T extends Player, K extends Rule<B>, B extends Board> {
 
     /**
      * This method is used to play the game.

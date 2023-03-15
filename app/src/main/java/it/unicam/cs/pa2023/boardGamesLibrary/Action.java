@@ -2,9 +2,11 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Optional;
 
-
 /**
- * -----------------------------------------------------
+ * This interface can be used to calculate the final coordinate of different kind of actions.
+ * This final coordinate, together with an initial coordinate, can be used to change the position of a piece,
+ * insert a new one or remove an already placed one.
+ *
  * @param <B> A class that extends the Board interface.
  */
 public interface Action<B extends Board> {
@@ -35,7 +37,7 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the same x and z coordinates as the coordinate passed as a parameter, but with
      * a y coordinate that is n_steps higher or lower.
      */
-    Coordinate verticalMovement(Coordinate coordinate, int n_steps);
+    Coordinate verticalMovement(Coordinate coordinate, Integer n_steps);
 
     /**
      * Given a coordinate, return a new coordinate that is the same as the original one, but with the x-value
@@ -46,7 +48,7 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the same y and z coordinates as the coordinate passed as a parameter, but with
      * a x coordinate that is n_steps higher or lower.
      */
-    Coordinate horizontalMovement(Coordinate coordinate, int n_steps);
+    Coordinate horizontalMovement(Coordinate coordinate, Integer n_steps);
 
     /**
      * Given a coordinate, return a new coordinate that is the same as the original one, but with the x and y values
@@ -58,7 +60,7 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the same z coordinate as the coordinate passed as a parameter, but with
      * the x and y coordinates respectively x_steps and y_steps higher or lower.
      */
-    Coordinate diagonalMovement(Coordinate coordinate, int x_steps, int y_steps);
+    Coordinate diagonalMovement(Coordinate coordinate, Integer x_steps, Integer y_steps);
 
     /**
      * Given a coordinate and a board number, returns a new coordinate with the same x and y values but with the new
@@ -68,7 +70,7 @@ public interface Action<B extends Board> {
      * @param n_board the number of the board you want to change to.
      * @return A new coordinate with the same x and y values but with the new board number.
      */
-    Coordinate changeBoard(Coordinate coordinate, int n_board);
+    Coordinate changeBoard(Coordinate coordinate, Integer n_board);
 
     /**
      * Given a coordinate, and the x, y and z values passed as direction, returns a new coordinate with the corresponding
@@ -81,6 +83,6 @@ public interface Action<B extends Board> {
      * @return A new Coordinate object with the x, y, and z values of the original Coordinate object plus the x, y, and z
      * values of the direction passed in.
      */
-    Coordinate getCoordinateFromDirection(Coordinate coordinate, int x, int y, int z);
+    Coordinate getCoordinateFromDirection(Coordinate coordinate, Integer x, Integer y, Integer z);
 
 }

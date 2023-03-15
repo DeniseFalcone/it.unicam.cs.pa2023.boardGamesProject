@@ -3,6 +3,9 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * This interface can be used to implement a chessboard, manage its state and get cells through different conditions.
+ */
 public interface Board{
 
 

@@ -5,6 +5,9 @@ import it.unicam.cs.pa2023.boardGamesLibrary.DefaultAction;
 import it.unicam.cs.pa2023.boardGamesLibrary.DefaultRule;
 import it.unicam.cs.pa2023.boardGamesLibrary.Piece;
 
+/**
+ * This class extends the DefaultRule class implementing a simple othello rule.
+ */
 public class OthelloRule extends DefaultRule<OthelloBoard> {
 
     private DefaultAction<OthelloBoard> action;

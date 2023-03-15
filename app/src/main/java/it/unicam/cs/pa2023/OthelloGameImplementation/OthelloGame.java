@@ -5,6 +5,9 @@ import it.unicam.cs.pa2023.OthelloGameImplementation.OthelloRules.InsertPieceRul
 import it.unicam.cs.pa2023.boardGamesLibrary.*;
 import java.util.*;
 
+/**
+ * This class extends the DefaultGame class and implements an OthelloGame.
+ */
 public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, OthelloBoard, OthelloCoordinateMapper> {
 
     public OthelloGame() {
@@ -15,11 +18,12 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     }
 
     /**
-     * Given a player, prints the board, prints the turn player, gets a valid coordinate from the player,
-     * applies the rules to the coordinate, updates the turn and the players' score, and returns true
+     * Given a player, firstly it prints the board and the turn player, then gets a valid coordinate from the player,
+     * applies the rules to the coordinate, updates the turn and the players' score and returns true, otherwise,
+     * if the action is not valid, returns false without saving the board whit the rules applied and the game state.
      *
-     * @param player The player who's turn it is.
-     * @return A boolean value.
+     * @param player The player whose turn it is.
+     * @return true if the player played his turn, false otherwise.
      */
     protected boolean playTurn(OthelloPlayer player){
         GameState<OthelloBoard, OthelloPlayer> gameState = new GameState<>(this.cloneOthelloBoard(this.getGameBoard()), player, this.getTurn());
@@ -94,6 +98,9 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         this.setupRules();
     }
 
+    /**
+     * This method sets up the rules to play Othello: a ChangeColorRule and an InsertPieceRule.
+     */
     private void setupRules(){
         ChangeColorRule changeColorRule = new ChangeColorRule();
         InsertPieceRule insertPieceRule = new InsertPieceRule();
@@ -102,11 +109,7 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     }
 
     /**
-     * "Create two players, one with dark pieces and one with light pieces, and add them to the game."
-     *
-     * The first thing we do is create two players. The first parameter is the name of the player, the second is the color
-     * of the pieces, the third is the pieces themselves, the fourth is the number of pieces the player starts with, and
-     * the fifth is the coordinate mapper
+     * This method sets up the two players to play Othello, one that plays with the dark pieces and one with the light ones.
      */
     private void setupPlayers(){
         OthelloPlayer player1 = new OthelloPlayer("Black", Colors.DARK, 2, this.getDefaultCoordinateMapper());
@@ -115,6 +118,9 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         this.addPlayer(player2);
     }
 
+    /**
+     * This method sets up the game board and insert the first four pieces (two for the DARK player and two for the LIGHT one).
+     */
     private void setupBoard() {
         this.setGameBoard(new OthelloBoard(8,8,1));
         Coordinate[] coordinates = {
@@ -132,14 +138,14 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
     }
 
     /**
-     * It creates 64 pieces of the same color and returns them in an ArrayList
+     * This method creates 64 BASECOLOR pieces and returns them in an ArrayList.
      *
      * @return An ArrayList of Piece objects.
      */
     private ArrayList<Piece> createPieces(){
         ArrayList<Piece> playerPieces = new ArrayList<>();
         for(int i=0; i<64;i++){
-            Piece piece = new Piece(Colors.DARK, 1, "piece");
+            Piece piece = new Piece(Colors.BASECOLOR, 1, "piece");
             playerPieces.add(piece);
         }
         return  playerPieces;
@@ -158,7 +164,12 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         }
     }
 
-
+    /**
+     * Given an OthelloPlayer, returns true if the player can make at least one action and false otherwise.
+     *
+     * @param player player to check if he can play.
+     * @return true if the player can make at least one action and false otherwise.
+     */
     protected boolean playerCanPlayTurn(OthelloPlayer player){
         if(this.getGamePieces().size() == 0){
             return false;
@@ -175,6 +186,12 @@ public class OthelloGame extends DefaultGame<OthelloPlayer, OthelloRule, Othello
         return false;
     }
 
+    /**
+     * Given a board to clone, returns a deep clone of the board.
+     *
+     * @param boardToCopy a board to clone.
+     * @return the OthelloBoard cloned.
+     */
     private OthelloBoard cloneOthelloBoard(OthelloBoard boardToCopy){
         OthelloBoard othelloBoard = new OthelloBoard(8,8,1);
         for(Cell cell: boardToCopy.getBoard()){

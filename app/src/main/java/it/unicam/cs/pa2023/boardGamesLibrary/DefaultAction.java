@@ -2,6 +2,10 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Optional;
 
+/**
+ * Default implementation of the Action interface.
+ * @param <B> A class that extends the DefaultBoard.
+ */
 public class DefaultAction<B extends DefaultBoard> implements Action<B>{
 
     @Override
@@ -20,12 +24,12 @@ public class DefaultAction<B extends DefaultBoard> implements Action<B>{
     }
 
     @Override
-    public Coordinate getCoordinateFromDirection(Coordinate coordinate, int x, int y, int z){
+    public Coordinate getCoordinateFromDirection(Coordinate coordinate, Integer x, Integer y, Integer z){
         return new Coordinate(coordinate.getX() + x, coordinate.getY() + y, coordinate.getZ() + z);
     }
 
     @Override
-    public Coordinate changeBoard(Coordinate coordinate, int n_board){
+    public Coordinate changeBoard(Coordinate coordinate, Integer n_board){
         if(n_board <= 0 || n_board == coordinate.getZ() ){
             throw new IllegalArgumentException("The board number passed is not valid. Insert a valid number.");
         }
@@ -33,7 +37,7 @@ public class DefaultAction<B extends DefaultBoard> implements Action<B>{
     }
 
     @Override
-    public Coordinate diagonalMovement(Coordinate coordinate, int x_steps, int y_steps){
+    public Coordinate diagonalMovement(Coordinate coordinate, Integer x_steps, Integer y_steps){
         if(y_steps == 0 || x_steps == 0){
             throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
         }
@@ -41,7 +45,7 @@ public class DefaultAction<B extends DefaultBoard> implements Action<B>{
     }
 
     @Override
-    public Coordinate horizontalMovement(Coordinate coordinate, int n_steps){
+    public Coordinate horizontalMovement(Coordinate coordinate, Integer n_steps){
         if(n_steps == 0){
             throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
         }
@@ -49,7 +53,7 @@ public class DefaultAction<B extends DefaultBoard> implements Action<B>{
     }
 
     @Override
-    public  Coordinate verticalMovement(Coordinate coordinate, int n_steps){
+    public  Coordinate verticalMovement(Coordinate coordinate, Integer n_steps){
         if(n_steps == 0){
             throw new IllegalArgumentException("The number of steps passed is not valid. Insert a valid number.");
         }

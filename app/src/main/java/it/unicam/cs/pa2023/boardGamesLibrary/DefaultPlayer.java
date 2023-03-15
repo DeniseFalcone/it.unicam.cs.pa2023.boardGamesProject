@@ -3,6 +3,12 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 import java.util.Locale;
 import java.util.Objects;
 
+/**
+ * Default implementation of the Player interface.
+ * It has four attributes: the name of the player, the color assigned to the player, the player score and
+ * a mapper to map the coordinates the player inserts.
+ * @param <D> A class that extends the DefaultCoordinateMapper.
+ */
 public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
 
     private int score;
@@ -10,13 +16,6 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
     private Colors color;
     private D mapper;
 
-    /**
-     * DefaultPlayer constructor that creates a player.
-     * @param name name of the player.
-     * @param color color of the player.
-     * @param score score of the player.
-     * @param mapper mapper for the coordinates.
-     */
     public DefaultPlayer(String name, Colors color, int score, D mapper) {
         this.name = name;
         this.color = color;
@@ -28,7 +27,7 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
     public Coordinate insertCoordinate() {
         System.out.println("Insert the coordinate of where you want to insert a piece, separated by comma: ");
         String coordinate = InputManager.getInstance().inputString().toLowerCase(Locale.ROOT);
-        if(InputManager.getInstance().checkCoordinateInput(coordinate)){
+        if(Coordinate.checkCoordinate(coordinate)){
             Integer[] coordinateValues = mapper.mapCoordinate(coordinate.split(","));
             return new Coordinate(coordinateValues[0], coordinateValues[1], coordinateValues[2]);
         }else{
@@ -42,9 +41,6 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
         return name;
     }
 
-    /**
-     * This method sets the name of the player.
-     */
     public void setName(String name) {
         this.name = name;
     }
@@ -54,9 +50,6 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
         return color;
     }
 
-    /**
-     * This method sets the color of the player.
-     */
     public void setColor(Colors color) {
         this.color = color;
     }
@@ -66,27 +59,15 @@ public class DefaultPlayer<D extends DefaultCoordinateMapper> implements Player{
         return score;
     }
 
-    /**
-     * This method returns the coordinate mapper used by the player.
-     *
-     * @return the coordinate mapper.
-     */
+    public void setScore(int score) {
+        this.score = score;
+    }
     public D getMapper() {
         return mapper;
     }
 
-    /**
-     * This method sets the mapper.
-     */
     public void setMapper(D mapper) {
         this.mapper = mapper;
-    }
-
-    /**
-     * This method sets the score of the player.
-     */
-    public void setScore(int score) {
-        this.score = score;
     }
 
     @Override

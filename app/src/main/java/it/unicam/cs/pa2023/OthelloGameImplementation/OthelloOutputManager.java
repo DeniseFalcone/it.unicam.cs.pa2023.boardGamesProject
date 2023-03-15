@@ -9,6 +9,9 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * This class is used to manage the othello game output.
+ */
 public class OthelloOutputManager {
 
     private static OthelloOutputManager othelloOutputManager;

@@ -2,10 +2,10 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 /**
- * A CoordinateMapper is an object that can convert between two coordinate systems.
+ * Default implementation of the CoordinateMapper interface.
+ * It has only one attribute that is the map used to map the coordinates.
  */
 public class DefaultCoordinateMapper implements CoordinateMapper{
 

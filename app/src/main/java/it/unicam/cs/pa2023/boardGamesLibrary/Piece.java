@@ -2,19 +2,16 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Objects;
 
+/**
+ * This class is used to create the pieces used to play a chessboard game.
+ * It has three attributes: color (the piece color), value (the value of the piece), name (the name of the piece).
+ */
 public class Piece {
 
     private Colors color;
     private Integer value;
     private String name;
 
-    /**
-     * Piece constructor that creates the pieces needed for the game.
-     *
-     * @param color color of the piece.
-     * @param value value of the piece.
-     * @param name name of the piece.
-     */
     public Piece(Colors color, Integer value, String name) {
         this.color = color;
         this.value = value;

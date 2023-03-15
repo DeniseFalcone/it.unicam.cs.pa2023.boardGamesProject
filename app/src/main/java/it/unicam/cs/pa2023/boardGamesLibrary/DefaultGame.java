@@ -2,8 +2,19 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Scanner;
 
+/**
+ * Default implementation of the Game interface.
+ * It has eight attributes: gameRules (a list with the game rules), players (a list with the players of the game),
+ * gameName (the name of the game), gameBoard (the chessboard used to play the game), gamePieces (the pieces used to play
+ * the game), turn (the turn of the game), gameStateHistory (the board-states of the whole game) and a defaultCoordinateMapper
+ * used to map the coordinates.
+ *
+ * @param <T> A class that extends the DefaultPlayer.
+ * @param <K> A class that extends the DefaultRule.
+ * @param <B> A class that extends the DefaultBoard.
+ * @param <D> A class that extends the DefaultCoordinateMapper.
+ */
 public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultRule<B>, B extends DefaultBoard, D extends DefaultCoordinateMapper> implements Game<T, K, B> {
     private ArrayList<K> gameRules;
     private ArrayList<Piece> gamePieces;
@@ -14,9 +25,6 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
     private ArrayList<GameState<B,T>> gameStateHistory;
     private D defaultCoordinateMapper;
 
-    /**
-     * DefaultGame constructor creates a default game with all values set to null or "".
-     */
     public DefaultGame(){
         this.gameRules = new ArrayList<>();
         this.players = new ArrayList<>();
@@ -66,82 +74,44 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
     @Override
     public abstract void updatePlayersScore();
 
-    /**
-     * This method returns the game rules.
-     *
-     * @return ArrayList of the game rules.
-     */
+
     public ArrayList<K> getGameRules() {
         return gameRules;
     }
 
-    /**
-     * This method sets the game rules.
-     */
     public void setGameRules(ArrayList<K> gameRules) {
         this.gameRules = gameRules;
     }
 
-    /**
-     * This method returns the players.
-     *
-     * @return ArrayList of the players.
-     */
     public ArrayList<T> getPlayers() {
         return players;
     }
 
-    /**
-     * This method sets the players.
-     */
     public void setPlayers(ArrayList<T> players) {
         this.players = players;
     }
 
-    /**
-     * This method returns the game name.
-     *
-     * @return the name of the game.
-     */
+    @Override
     public String getGameName() {
         return gameName;
     }
 
-    /**
-     * This method sets the game name.
-     */
     public void setGameName(String gameName) {
         this.gameName = gameName;
     }
 
-    /**
-     * This method returns the game board.
-     *
-     * @return the game board.
-     */
     public B getGameBoard() {
         return gameBoard;
     }
 
-    /**
-     * This method sets the game board.
-     */
     public void setGameBoard(B gameBoard) {
         this.gameBoard = gameBoard;
     }
 
-    /**
-     * This method returns the actual turn.
-     *
-     * @return turn.
-     */
     public int getTurn() {
         return turn;
     }
 
-    /**
-     * This method sets the game turn.
-     */
     public void setTurn(int turn) {
         this.turn = turn;
     }
@@ -180,18 +150,10 @@ public abstract class DefaultGame<T extends DefaultPlayer<D>, K extends DefaultR
         return "Game" + gameName;
     }
 
-    /**
-     * This method returns the pieces used to play.
-     *
-     * @return ArrayList of pieces.
-     */
     public ArrayList<Piece> getGamePieces() {
         return gamePieces;
     }
 
-    /**
-     * This method sets the game pieces.
-     */
     public void setGamePieces(ArrayList<Piece> gamePieces) {
         this.gamePieces = gamePieces;
     }

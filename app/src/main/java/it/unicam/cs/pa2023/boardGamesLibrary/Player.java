@@ -1,8 +1,8 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * This interface can be used to create a player and make the player insert a coordinate.
+ */
 public interface Player{
 
     /**

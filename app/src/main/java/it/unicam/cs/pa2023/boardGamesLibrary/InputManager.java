@@ -1,8 +1,10 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
+/**
+ * This class is used to manage the input.
+ */
 public class InputManager {
 
     private static InputManager inputOutputManager;
@@ -37,14 +39,5 @@ public class InputManager {
         this.scanner.close();
     }
 
-    /**
-     * Given a string, this method checks if the input is not null and matches the pattern
-     * of a letter or number, followed by a comma, followed by a number.
-     *
-     * @param string The string to be checked.
-     * @return true if the string matches the pattern and false otherwise.
-     */
-    public boolean checkCoordinateInput(String string){
-        return string != null && Pattern.matches("[a-zA-Z0-9,]+,[0-9]+", string);
-    }
+
 }

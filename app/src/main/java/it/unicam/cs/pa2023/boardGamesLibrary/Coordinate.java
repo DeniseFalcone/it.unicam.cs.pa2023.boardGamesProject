@@ -1,9 +1,12 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
- * Classe che descrive una qualsiasi coordinata nella board implementata.
+ * This class is used to create a coordinate object.
+ * It has three attributes: x, y and z values that represents the position on the board.
+ * If only two values are passed to the constructor, the z value is going to be set to 1 by default.
  */
 public class Coordinate {
 
@@ -11,76 +14,38 @@ public class Coordinate {
     private Integer y;
     private Integer z;
 
-    /**
-     * Coordinate constructor that only takes the x and y values. The z is set by default at 1.
-     *
-     * @param x the x-axis value.
-     * @param y the y-axis value.
-     */
     public Coordinate(Integer x, Integer y) {
         this.x = x;
         this.y = y;
         this.z = 1;
     }
 
-    /**
-     * Coordinate constructor that takes the x y and z values.
-     *
-     * @param x the x-axis value.
-     * @param y the y-axis value.
-     * @param z the z-axis value.
-     */
     public Coordinate(Integer x, Integer y, Integer z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    /**
-     * This method returns the value of the x variable.
-     *
-     * @return The value of the x variable.
-     */
     public Integer getX() {
         return x;
     }
 
-    /**
-     * This method sets the value of the x variable.
-     */
     public void setX(Integer x) {
         this.x = x;
     }
 
-    /**
-     * This method returns the value of the y variable.
-     *
-     * @return The value of the y variable.
-     */
     public Integer getY() {
         return y;
     }
 
-
-    /**
-     * This method sets the value of the y variable.
-     */
     public void setY(Integer y) {
         this.y = y;
     }
 
-    /**
-     * This method returns the value of the z variable.
-     *
-     * @return The value of the z variable.
-     */
     public Integer getZ() {
         return z;
     }
 
-    /**
-     * This method sets the value of the z variable.
-     */
     public void setZ(Integer z) {
         this.z = z;
     }
@@ -105,5 +70,17 @@ public class Coordinate {
                 ", y=" + y +
                 ", z=" + z +
                 '}';
+    }
+
+    /**
+     * Given a string, this static method checks if the input is not null and matches the pattern
+     * of a letter or number, followed by a comma, followed by a number.
+     * This check has to be done before creating the coordinate.
+     *
+     * @param string The string to be checked.
+     * @return true if the string matches the pattern and false otherwise.
+     */
+    public static boolean checkCoordinate(String string){
+        return string != null && Pattern.matches("[a-zA-Z0-9,]+,[0-9]+", string);
     }
 }

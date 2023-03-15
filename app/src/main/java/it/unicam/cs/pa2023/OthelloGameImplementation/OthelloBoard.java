@@ -7,6 +7,9 @@ import it.unicam.cs.pa2023.boardGamesLibrary.DefaultBoard;
 
 import java.util.ArrayList;
 
+/**
+ * This class extends the DefaultBoard class implementing an OthelloBoard.
+ */
 public class OthelloBoard extends DefaultBoard {
 
     public OthelloBoard(int width, int height, int numberOfBoard) {

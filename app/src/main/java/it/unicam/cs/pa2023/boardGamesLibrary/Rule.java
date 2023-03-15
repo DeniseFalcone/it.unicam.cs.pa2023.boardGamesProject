@@ -1,8 +1,12 @@
 package it.unicam.cs.pa2023.boardGamesLibrary;
 
+/**
+ * This interface can be used to create the rules to play the game.
+ *
+ * @param <B> A class that extends the Board interface.
+ */
 @FunctionalInterface
 public interface Rule<B extends Board> {
-
 
 
     /**

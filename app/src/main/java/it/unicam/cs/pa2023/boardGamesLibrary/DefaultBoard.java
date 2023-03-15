@@ -3,6 +3,12 @@ package it.unicam.cs.pa2023.boardGamesLibrary;
 import java.util.ArrayList;
 import java.util.Optional;
 
+
+/**
+ * Default implementation of the Board interface.
+ * It has 4 attributes: width, height and the numberOfBoard represent the dimension of the chessboard while board is
+ * an array of cells used to describe the chessboard.
+ */
 public class DefaultBoard implements Board {
 
     private ArrayList<Cell> board;
@@ -180,66 +186,34 @@ public class DefaultBoard implements Board {
         return neighboursCell;
     }
 
-    /**
-     * This method returns the board.
-     *
-     * @return the ArrayList of cells that represents the board.
-     */
     public ArrayList<Cell> getBoard() {
         return board;
     }
 
-    /**
-     * This method sets the board.
-     */
     public void setBoard(ArrayList<Cell> board) {
         this.board = board;
     }
 
-    /**
-     * This method returns the width of the board.
-     *
-     * @return the width of the board.
-     */
     public int getWidth() {
         return width;
     }
 
-    /**
-     * This method sets the width of the board.
-     */
     public void setWidth(int width) {
         this.width = width;
     }
 
-    /**
-     * This method returns the height of the board.
-     *
-     * @return the height of the board.
-     */
     public int getHeight() {
         return height;
     }
 
-    /**
-     * This method sets the height of the board.
-     */
     public void setHeight(int height) {
         this.height = height;
     }
 
-    /**
-     * This method returns the number of boards.
-     *
-     * @return the number of boards.
-     */
     public int getnumberOfBoard() {
         return numberOfBoard;
     }
 
-    /**
-     * This method sets the number of boards.
-     */
     public void setNumberOfBoard(int numberOfBoard) {
         this.numberOfBoard = numberOfBoard;
     }
